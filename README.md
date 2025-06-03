@@ -17,3 +17,10 @@ A simple Streamlit app template for you to modify!
    ```
    $ streamlit run streamlit_app.py
    ```
+
+### Simulator
+
+The app now lets you fetch historical prices for a stock or ETF using `yfinance`.
+Enter a ticker symbol and an optional date range. The app downloads daily data,
+calculates daily percentage returns, and then annualizes the mean and standard
+deviation to produce expected return and volatility estimates.
