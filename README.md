@@ -1,26 +1,21 @@
-# 🎈 Blank app template
+# Trend – Portfolio Dashboard
 
-A simple Streamlit app template for you to modify!
+Streamlit application for analysing Freedom24 or Interactive Brokers exports.
+It supports symbol mapping, live pricing, basic backtests and a dollar‑cost
+averaging Monte Carlo simulator.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+### How to run
 
-### How to run it on your own machine
+1. Install Python dependencies
 
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
+   ```bash
+   pip install -r requirements.txt
    ```
 
-### Simulator
+2. Launch Streamlit
 
-The app now lets you fetch historical prices for a stock or ETF using `yfinance`.
-Enter a ticker symbol and an optional date range. The app downloads daily data,
-calculates daily percentage returns, and then annualizes the mean and standard
-deviation to produce expected return and volatility estimates.
+   ```bash
+   streamlit run app_v5.py
+   ```
+
+The app runs entirely locally – uploaded files and mappings stay on your machine.
