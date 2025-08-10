@@ -1,0 +1,38 @@
+/* Cyberpunk dark theme styling */
+body {
+  background: #0b0f14;
+  color: #d9e1ff;
+}
+
+[data-testid="stHeader"] {
+  background: #0b0f14;
+}
+
+[data-testid="stSidebar"] > div {
+  background: #10151f;
+}
+
+p, span, label {
+  color: #d9e1ff;
+}
+
+[data-testid="metric-container"] {
+  background: #10151f;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(107,230,255,0.3);
+}
+
+button {
+  background: linear-gradient(90deg, #6be6ff, #a86bff);
+  color: #0b0f14;
+  border: none;
+}
+
+button:hover {
+  box-shadow: 0 0 8px #6be6ff;
+}
+
+/* Plotly charts transparent background */
+.js-plotly-plot .plotly {
+  background: rgba(0,0,0,0);
+}
