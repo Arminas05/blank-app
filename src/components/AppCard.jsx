@@ -1,5 +1,5 @@
 import GradeDisplay from './GradeDisplay'
-import { GRADE_COLORS } from '../data/appsDatabase'
+import { GRADE_COLORS, GRADE_MEANINGS } from '../data/appsDatabase'
 
 export default function AppCard({ app, onClick, isSkipped, isInstalled, isDownloading }) {
   const disabled = isSkipped || isInstalled
@@ -8,65 +8,93 @@ export default function AppCard({ app, onClick, isSkipped, isInstalled, isDownlo
     if (!disabled && !isDownloading) onClick(app)
   }
 
+  const gradeColor = GRADE_COLORS[app.grade]
+
   return (
     <div
-      onClick={handleClick}
+      className={[
+        'bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col',
+        'transition-all duration-200',
+        disabled
+          ? 'opacity-50'
+          : isDownloading
+          ? ''
+          : 'hover:shadow-lg hover:-translate-y-0.5 cursor-pointer',
+      ].join(' ')}
+      onClick={!disabled && !isDownloading ? handleClick : undefined}
       role="button"
       tabIndex={disabled ? -1 : 0}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick() }}
+      onKeyDown={(e) => { if ((e.key === 'Enter' || e.key === ' ') && !disabled) handleClick() }}
       aria-disabled={disabled}
-      className={[
-        'w-full text-left rounded-2xl p-4 bg-white shadow-sm border border-gray-100',
-        'transition-all duration-200 select-none',
-        disabled
-          ? 'opacity-40 cursor-not-allowed'
-          : isDownloading
-          ? 'cursor-default'
-          : 'hover:shadow-md hover:-translate-y-0.5 cursor-pointer active:scale-[0.99]',
-      ].join(' ')}
     >
-      <div className="flex items-center gap-3">
-        {/* Icon */}
-        <span
-          className="text-3xl w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl flex-shrink-0"
-          aria-hidden="true"
-        >
-          {app.icon}
-        </span>
+      {/* Grade accent strip */}
+      <div className="h-1 w-full" style={{ backgroundColor: gradeColor }} />
 
-        {/* Name + category */}
-        <div className="flex-1 min-w-0">
-          <p className="font-semibold text-gray-900 truncate">{app.name}</p>
-          <p className="text-xs text-gray-500 truncate mt-0.5">{app.category}</p>
+      <div className="p-5 flex flex-col flex-1">
+        {/* Top row: icon + grade */}
+        <div className="flex items-start justify-between mb-4">
+          <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-3xl border border-slate-100">
+            {app.icon}
+          </div>
+          <div className="flex flex-col items-end gap-1">
+            <GradeDisplay grade={app.grade} size={48} />
+            <span className="text-[10px] text-slate-400 font-medium">{app.grade === 'A' || app.grade === 'B' ? '✓ Safe choice' : app.grade === 'E' ? '⚠ High risk' : 'Review carefully'}</span>
+          </div>
         </div>
 
-        {/* Status badge or grade */}
-        <div className="flex-shrink-0">
+        {/* Name + category */}
+        <p className="font-bold text-slate-900 text-base mb-0.5">{app.name}</p>
+        <p className="text-xs text-slate-500 mb-3">{app.category}</p>
+
+        {/* Grade meaning badge */}
+        <div
+          className="inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full self-start mb-3"
+          style={{ backgroundColor: gradeColor + '18', color: gradeColor }}
+        >
+          <span className="font-black">{app.grade}</span>
+          <span>·</span>
+          <span>{GRADE_MEANINGS[app.grade].split(' — ')[0]}</span>
+        </div>
+
+        {/* Summary snippet */}
+        <p className="text-xs text-slate-500 leading-relaxed flex-1 mb-4 line-clamp-2">
+          {app.summary}
+        </p>
+
+        {/* Download progress bar */}
+        {isDownloading && (
+          <div className="mb-3 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div
+              className="h-full rounded-full animate-download-bar"
+              style={{ backgroundColor: gradeColor }}
+            />
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="mt-auto">
           {isInstalled ? (
-            <span className="text-xs font-semibold text-green-700 bg-green-50 border border-green-200 px-2.5 py-1 rounded-full">
+            <div className="w-full py-2.5 rounded-xl bg-green-50 border border-green-200 text-green-700 text-sm font-semibold text-center">
               Installed ✓
-            </span>
+            </div>
           ) : isDownloading ? (
-            <span className="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-200 px-2.5 py-1 rounded-full">
+            <div className="w-full py-2.5 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 text-sm font-semibold text-center">
               Downloading…
-            </span>
+            </div>
           ) : isSkipped ? (
-            <span className="text-xs text-gray-400">Skipped</span>
+            <div className="w-full py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-400 text-sm font-semibold text-center">
+              Skipped
+            </div>
           ) : (
-            <GradeDisplay grade={app.grade} size={44} />
+            <button
+              onClick={(e) => { e.stopPropagation(); handleClick() }}
+              className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-700 text-white text-sm font-semibold text-center transition-colors"
+            >
+              Check Privacy Receipt →
+            </button>
           )}
         </div>
       </div>
-
-      {/* Download progress bar */}
-      {isDownloading && (
-        <div className="mt-3 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-          <div
-            className="h-full rounded-full animate-download-bar"
-            style={{ backgroundColor: GRADE_COLORS[app.grade] }}
-          />
-        </div>
-      )}
     </div>
   )
 }
