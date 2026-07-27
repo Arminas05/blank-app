@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Renginių vedėjas ir DJ — viena komanda, vienas skambutis</title>
+<meta name="description" content="Vedėjas ir DJ, kurie dirba kartu nuolat. Pilnas vakaro paketas 750 €: vedimas, muzika, įgarsinimas, apšvietimas. Vestuvės, jubiliejai, įmonių šventės visoje Lietuvoje.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161A22;
+  --ink-soft:#4A5260;
+  --line:#E6E2DA;
+  --bg:#FFFFFF;
+  --bg-warm:#FBF8F3;
+  --amber:#B87514;
+  --amber-bright:#D89020;
+  --amber-wash:#FDF4E4;
+  --green:#1F7A4D;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(22,26,34,.04),0 8px 24px rgba(22,26,34,.06);
+  --shadow-lg:0 2px 4px rgba(22,26,34,.05),0 18px 48px rgba(22,26,34,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  padding-bottom:76px;
+}
+@media(min-width:860px){body{padding-bottom:0}}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+.wrap-wide{max-width:1060px;margin:0 auto;padding:0 22px}
+section{padding:64px 0}
+section.tight{padding:44px 0}
+.warm{background:var(--bg-warm)}
+.bordered{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.18;letter-spacing:-.015em;margin:0 0 18px}
+h1{font-size:clamp(30px,5.2vw,46px)}
+h2{font-size:clamp(25px,3.8vw,34px);margin-top:0}
+h3{font-size:20px;margin-bottom:10px}
+p{margin:0 0 17px}
+b,strong{font-weight:700;color:var(--ink)}
+.c{text-align:center}
+.eyebrow{
+  font-size:12.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--amber);margin:0 0 16px;font-family:Inter,sans-serif;
+}
+.lead{font-size:19px;color:var(--ink-soft);line-height:1.6}
+.big{
+  font-family:Fraunces,Georgia,serif;font-size:21px;line-height:1.45;
+  color:var(--ink);border-left:3px solid var(--amber);padding:4px 0 4px 20px;margin:26px 0;
+}
+.muted{color:var(--ink-soft)}
+.small{font-size:14.5px}
+
+/* CTA */
+.cta{
+  display:inline-block;background:var(--amber);color:#fff;text-decoration:none;
+  font-weight:700;font-size:17px;padding:17px 34px;border-radius:10px;
+  box-shadow:0 2px 0 rgba(0,0,0,.06),0 10px 22px rgba(184,117,20,.26);
+  transition:transform .12s ease,background .15s ease;border:none;cursor:pointer;
+}
+.cta:hover{background:var(--amber-bright);transform:translateY(-1px)}
+.cta-full{display:block;width:100%;text-align:center;padding:19px 20px}
+.guar{font-size:14px;color:var(--ink-soft);margin:12px 0 0}
+.ctablock{margin:30px 0}
+
+/* Offer card */
+.offer{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 28px;box-shadow:var(--shadow);margin:34px 0;
+}
+.offer h3{margin-top:0;font-size:22px}
+.price-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:6px 0 20px}
+.price-now{font-family:Fraunces,serif;font-size:40px;font-weight:700;line-height:1}
+.price-note{font-size:14.5px;color:var(--ink-soft)}
+.offer ul{list-style:none;padding:0;margin:0 0 22px}
+.offer li{
+  padding:9px 0 9px 30px;position:relative;border-bottom:1px solid #F2EFE9;font-size:16.5px;
+}
+.offer li:last-child{border-bottom:none}
+.offer li::before{
+  content:"";position:absolute;left:2px;top:15px;width:15px;height:9px;
+  border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);
+  transform:rotate(-45deg);
+}
+
+/* checklist (hero) */
+.checks{list-style:none;padding:0;margin:0}
+.checks li{position:relative;padding:0 0 16px 34px;font-size:16.5px;line-height:1.55}
+.checks li::before{
+  content:"";position:absolute;left:3px;top:6px;width:16px;height:9px;
+  border-left:2.5px solid var(--amber);border-bottom:2.5px solid var(--amber);
+  transform:rotate(-45deg);
+}
+
+/* hero */
+.hero{padding:52px 0 56px;background:
+  radial-gradient(1100px 380px at 50% -8%,var(--amber-wash) 0%,rgba(253,244,228,0) 68%);}
+.hero-img{
+  width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);display:block;margin:34px 0 0;
+}
+.herogrid{display:grid;gap:32px;align-items:center;margin-top:38px}
+@media(min-width:820px){.herogrid{grid-template-columns:1.15fr .85fr;gap:44px}}
+.herogrid .hero-img{margin:0;aspect-ratio:4/3}
+
+/* MEDIA GALLERY */
+.gal-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0 0}
+@media(max-width:640px){.gal-videos{grid-template-columns:repeat(3,1fr);gap:9px}}
+.mcard{margin:0}
+.mcard video,.mcard img{
+  width:100%;display:block;border-radius:12px;background:#EFEBE4;
+  box-shadow:var(--shadow);
+}
+.gal-videos video{aspect-ratio:9/16;object-fit:cover}
+.mcap{
+  font-size:13px;color:var(--ink-soft);margin:9px 2px 0;line-height:1.4;
+}
+@media(max-width:640px){.gal-videos .mcap{font-size:11px}}
+.gal-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+.gal-photos img{aspect-ratio:4/3;object-fit:cover}
+.gal-photos .tall{grid-column:span 2}
+.gal-photos .tall img{aspect-ratio:21/9}
+@media(max-width:560px){
+  .gal-photos{grid-template-columns:1fr}
+  .gal-photos .tall{grid-column:span 1}
+  .gal-photos .tall img{aspect-ratio:4/3}
+}
+
+/* steps */
+.steps{counter-reset:s;list-style:none;padding:0;margin:26px 0 0}
+.steps li{
+  counter-increment:s;position:relative;padding:0 0 20px 52px;
+}
+.steps li::before{
+  content:counter(s);position:absolute;left:0;top:0;
+  width:32px;height:32px;border-radius:50%;background:var(--amber-wash);
+  color:var(--amber);font-weight:700;font-size:14px;
+  display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;
+}
+
+/* contrast lists */
+.xlist,.vlist{list-style:none;padding:0;margin:18px 0}
+.xlist li,.vlist li{position:relative;padding:0 0 13px 30px;line-height:1.55}
+.xlist li::before{
+  content:"";position:absolute;left:5px;top:9px;width:13px;height:2px;
+  background:#C0392B;transform:rotate(45deg);box-shadow:0 0 0 0 #fff;
+}
+.xlist li::after{
+  content:"";position:absolute;left:5px;top:9px;width:13px;height:2px;
+  background:#C0392B;transform:rotate(-45deg);
+}
+.vlist li::before{
+  content:"";position:absolute;left:5px;top:6px;width:14px;height:8px;
+  border-left:2.5px solid var(--green);border-bottom:2.5px solid var(--green);
+  transform:rotate(-45deg);
+}
+
+/* testimonial */
+.tcard{
+  background:#fff;border:1px solid var(--line);border-left:3px solid var(--amber);
+  border-radius:10px;padding:22px 24px;margin:16px 0;box-shadow:var(--shadow);
+}
+.tcard h4{margin:0 0 8px;font-size:16.5px;font-family:Inter,sans-serif;font-weight:700}
+.tcard p{margin:0 0 8px;font-size:16px;color:var(--ink-soft);line-height:1.6}
+.tcard .who{font-size:14px;color:var(--ink-soft);margin:0}
+.ph{
+  background:#FFF8E8;border:1px dashed #D9B978;color:#8A6A1E;
+  font-size:12.5px;padding:3px 9px;border-radius:99px;display:inline-block;
+  margin-bottom:10px;font-weight:600;letter-spacing:.02em;
+}
+
+/* disclaimer / note */
+.note{
+  background:var(--bg-warm);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 26px 10px;margin:28px 0;
+}
+.note h3{margin-top:0}
+
+/* FAQ */
+.faq{border-top:1px solid var(--line);margin-top:26px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  cursor:pointer;padding:19px 40px 19px 2px;font-weight:600;font-size:17px;
+  list-style:none;position:relative;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:8px;top:26px;width:9px;height:9px;
+  border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);
+  transform:rotate(45deg);transition:transform .2s ease;
+}
+.faq details[open] summary::after{transform:rotate(-135deg);top:30px}
+.faq .ans{padding:0 2px 20px;color:var(--ink-soft);font-size:16px}
+.faq .ans p:last-child{margin-bottom:0}
+
+/* sticky mobile */
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);padding:11px 14px;
+  display:flex;align-items:center;gap:12px;
+  box-shadow:0 -4px 20px rgba(22,26,34,.07);
+}
+.sticky .s-price{font-size:13px;line-height:1.25;color:var(--ink-soft);flex:0 0 auto}
+.sticky .s-price b{display:block;font-size:16px;color:var(--ink);font-family:Fraunces,serif}
+.sticky .cta{flex:1;text-align:center;padding:14px 12px;font-size:15.5px}
+@media(min-width:860px){.sticky{display:none}}
+
+footer{background:#12151C;color:#9AA1AC;padding:46px 0 40px;font-size:14px}
+footer a{color:#D9DDE3;text-decoration:none;border-bottom:1px solid #333A45}
+footer b{color:#F1EFEA}
+hr.soft{border:none;border-top:1px solid var(--line);margin:38px 0}
+</style>
+</head>
+<body>
+
+<!-- ══════ DEPTH 1 — HERO / IMPULSE ══════ -->
+<section class="hero">
+  <div class="wrap-wide">
+    <p class="eyebrow c">Vestuvės · Jubiliejai · Įmonių šventės — visoje Lietuvoje</p>
+    <h1 class="c">Kaip bet kokia šventė — net jei svečiai <b>nepažįsta vieni kitų</b> ir „mūsų giminė nešoka" — tampa vakaru, apie kurį kalbama dar mėnesį</h1>
+    <p class="lead c" style="max-width:640px;margin:0 auto">Vedėjas ir DJ, kurie dirba kartu nuolat. Viena sutartis. Vienas telefono numeris. Jokio derinimo tarp dviejų nepažįstamų žmonių jūsų šventės dieną.</p>
+
+    <div class="herogrid">
+      <img class="hero-img" src="/media/hero.jpg" alt="Pilna šokių aikštelė renginio metu" width="800" height="1066" fetchpriority="high" decoding="async">
+      <div>
+        <p style="font-weight:700;margin-bottom:14px;font-size:15px">Ką gaunate už <b>750 €</b>:</p>
+        <ul class="checks">
+          <li><b>Renginio vedėjas</b> — scenarijus, tostai, žaidimai, ceremonijos vedimas</li>
+          <li><b>DJ ir muzika</b> visą vakarą — nuo fono per vakarienę iki pilnos šokių aikštelės</li>
+          <li><b>Profesionalus įgarsinimas</b> — kad girdėtų ir prie tolimiausio stalo</li>
+          <li><b>Apšvietimas</b> — šilta vakaro atmosfera, ne diskotekos blyksniai</li>
+        </ul>
+        <div class="ctablock" style="margin-bottom:0">
+          <a class="cta cta-full" href="tel:+37067472202">Skambinkite: +370 674 72202</a>
+          <p class="guar c">Pirmas pokalbis nemokamas ir neįpareigojantis. Kaina fiksuojama sutartyje.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PROBLEM ══════ -->
+<section class="warm bordered">
+  <div class="wrap">
+    <h2>Jei skaitote šį puslapį, spėju, kad jūsų šventė jau turi datą</h2>
+    <p>Ir kartu su ta data atsirado mintis, kurios negalite nuvyti.</p>
+    <p>Jūs pavargote nuo klausimo, <b>ar tikrai viskas pavyks.</b> Nuo minties, kad sumokėsite pinigus — rimtus pinigus — o svečiai išsiskirstys pusę vienuolikos. Kad šokių aikštelė liks tuščia, nors muzika gros. Kad teta sėdės viena prie krašto stalo visą vakarą, o jūs to net nepastebėsite, nes būsite užsiėmę gesindami gaisrus.</p>
+    <p>Ir blogiausia — jūs net nežinote, ko klausti. Nes nesate matę, kaip tas vedėjas dirba. Nesate girdėję, kaip skamba jo garsas. Turite tik pokalbį telefonu ir viltį.</p>
+    <p class="big">Šventę galima suplanuoti iki smulkmenų. Bet vakaro nuotaikos nenusipirksi po fakto — arba ji tą vakarą atsiranda, arba ne.</p>
+    <p>Jei bent viena iš tų minčių jums pažįstama, likusi šio puslapio dalis skirta jums. Papasakosiu tiksliai, kaip mes tą nuotaiką sukuriame — ir kodėl tai priklauso nuo vieno dalyko, apie kurį beveik niekas neklausia.</p>
+  </div>
+</section>
+
+<!-- ══════ FAILURE FORMULA (device 6) ══════ -->
+<section>
+  <div class="wrap">
+    <h2>Sugadinto vakaro formulė</h2>
+    <p class="muted">Niekas nesuplanuoja nuobodaus vakaro. Jis susidėlioja pats — pagal šitą schemą:</p>
+    <ol class="steps">
+      <li><b>Randate vedėją</b> pagal nuotraukas ir malonų pokalbį telefonu. Atrodo šaunus. Rezervuojate.</li>
+      <li><b>Vedėjas sako: „DJ susirasiu."</b> Arba jūs randate DJ atskirai, nes taip pigiau. Du žmonės, kurie niekada kartu nedirbo.</li>
+      <li><b>Šventės dieną jie susipažįsta</b> — likus valandai iki svečių. Trumpas pokalbis prie garso pulto. „Kaip eisim?" — „Improvizuosim."</li>
+      <li><b>Vakarienė praeina gerai.</b> Iki čia viskas dar veikia — žmonės valgo, kalbasi.</li>
+      <li><b>Ateina lūžio taškas — pirmieji šokiai.</b> Vedėjas paskelbia, bet DJ dar renka dainą. Trys sekundės tylos. Žmonės pasižiūri vienas į kitą ir <b>lieka sėdėti.</b></li>
+      <li><b>Nuo čia — vėlu.</b> Šokių aikštelė neatšyla. DJ leidžia vis garsiau, tikėdamasis pagauti. Vedėjas kviečia vis dažniau. Kuo labiau spaudžia, tuo labiau žmonės sėdi.</li>
+      <li><b>22:40 pirmieji svečiai apsivelka paltus.</b> Jūs stovite salės gale ir galvojate: „Už ką aš sumokėjau?"</li>
+    </ol>
+    <p style="margin-top:8px">Ir keisčiausia — <b>niekas nepadarė nieko blogai.</b> Vedėjas dirbo. DJ dirbo. Tik ne kartu.</p>
+  </div>
+</section>
+
+<!-- ══════ PROOF GALLERY ══════ -->
+<section class="warm bordered">
+  <div class="wrap-wide">
+    <div class="wrap" style="padding:0">
+      <p class="eyebrow">Kaip tai atrodo iš tikrųjų</p>
+      <h2>Ne pažadai — akimirkos iš tikrų vakarų</h2>
+      <p class="muted" style="margin-bottom:0">Nepozuota, nefilmuota specialiai. Tiesiog tai, kas vyksta prie pulto ir aikštelėje, kai vakaras pavyksta.</p>
+    </div>
+
+    <div class="gal-videos">
+      <figure class="mcard">
+        <video src="/media/video-start.mp4" muted loop autoplay playsinline preload="metadata"></video>
+        <figcaption class="mcap">Pultas ir aikštelė vakaro pradžioje</figcaption>
+      </figure>
+      <figure class="mcard">
+        <video src="/media/video-mid.mp4" muted loop autoplay playsinline preload="metadata"></video>
+        <figcaption class="mcap">Vidurys vakaro — aikštelė pilna</figcaption>
+      </figure>
+      <figure class="mcard">
+        <video src="/media/video-sound.mp4" muted loop autoplay playsinline preload="metadata"></video>
+        <figcaption class="mcap">Garsas ir šviesos gyvai</figcaption>
+      </figure>
+    </div>
+
+    <div class="gal-photos">
+      <figure class="mcard tall">
+        <img src="/media/photo-console.jpg" alt="Garso pultas ir šokančių svečių aikštelė renginio metu" width="800" height="1066" loading="lazy" decoding="async">
+        <figcaption class="mcap">Pultas visada salėje, o ne užkulisiuose — matome aikštelę ir reaguojame į ją realiu laiku.</figcaption>
+      </figure>
+      <figure class="mcard">
+        <img src="/media/photo-music.jpg" alt="DJ prie kompiuterio ir garso pulto renginio metu" width="800" height="1000" loading="lazy" decoding="async">
+        <figcaption class="mcap">Muzika renkama vakaro eigoje, ne iš anksto sudėtas grojaraštis.</figcaption>
+      </figure>
+      <figure class="mcard">
+        <img src="/media/photo-setup.jpg" alt="Paruošta šokių aikštelė su apšvietimu prieš svečiams susirenkant" width="800" height="1066" loading="lazy" decoding="async">
+        <figcaption class="mcap">Aparatūra ir šviesos sustatomos gerokai prieš svečiams susirenkant.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ MECHANISM ══════ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Kaip mes dirbame</p>
+    <h2>Viskas remiasi vienu dalyku: <b>vedėjas ir DJ jau pažįsta vienas kitą</b></h2>
+    <p>Kai vedėją imate iš vienos vietos, o DJ iš kitos, vakaro tempas lūžta būtent tose vietose, kur jie turi perduoti vienas kitam estafetę. Šokių pradžia vėluoja. Po tosto lieka pauzė. Kulminacija praeina be muzikos.</p>
+    <p>Ir visa tai sprendžiate <b>jūs</b> — savo pačių šventės viduryje, su taure rankoje, kurios taip ir nespėjate išgerti.</p>
+    <p class="big">Mums nereikia derintis vietoje. Aš žinau, ką jis paleis. Jis žino, kada aš paskelbsiu. Tai atrodo kaip smulkmena — kol nepamatai vakaro, kur to nėra.</p>
+    <p>Praktikoje tai reiškia tris dalykus:</p>
+    <ul class="vlist">
+      <li><b>Vienas pokalbis, ne du.</b> Jūs derinate su vienu žmogumi. Mes suderiname tarpusavyje patys — tai ne jūsų darbas.</li>
+      <li><b>Nulis tylos lūžio taškuose.</b> Pirmieji šokiai, tortas, palinkėjimai — muzika stoja tiksliai ten, kur reikia, be „palauk, dar renku".</li>
+      <li><b>Vakaras skaitomas gyvai.</b> Jei matome, kad žmonės atšilo anksčiau — pradedame anksčiau. Jei dar ne — nespaudžiame. Grojaraštis nėra sudėtas iš anksto.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════ SECOND OFFER ══════ -->
+<section class="warm bordered tight">
+  <div class="wrap">
+    <div class="offer" style="margin:0">
+      <h3>Pilnas vakaro paketas</h3>
+      <div class="price-row">
+        <span class="price-now">750 €</span>
+        <span class="price-note">viskas įskaičiuota · papildomos valandos 150 €/val.</span>
+      </div>
+      <ul>
+        <li>Renginio vedėjas visam vakarui</li>
+        <li>DJ ir muzika</li>
+        <li>Įgarsinimas</li>
+        <li>Apšvietimas</li>
+      </ul>
+      <a class="cta cta-full" href="tel:+37067472202">Skambinkite: +370 674 72202</a>
+      <p class="guar c">Pirmas pokalbis nemokamas. Daugiau jokių eilučių sąskaitoje.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ENEMY (device 5) ══════ -->
+<section>
+  <div class="wrap">
+    <h2>Ką daro dauguma — ir kodėl tai jums kainuoja vakarą</h2>
+    <p class="muted">Nieko asmeniško kolegoms. Bet šitie dalykai kartojasi tiek dažnai, kad verta pasakyti garsiai:</p>
+    <ul class="xlist">
+      <li><b>Sudeda grojaraštį iš anksto ir laikosi jo</b> — nors salėje sėdi visai kitokie žmonės, nei įsivaizduota prieš mėnesį.</li>
+      <li><b>Kviečia šokti vis dažniau ir garsiau</b>, kai aikštelė tuščia — o spaudimas žmones tik dar labiau prisodina prie stalų.</li>
+      <li><b>Prikrauna vakarą konkursų</b>, kad „nebūtų nuobodu" — ir svečiai pusę vakaro praleidžia laukdami, kada baigsis.</li>
+      <li><b>Atsiveda DJ, kurio nepažįsta</b> — nes taip patogiau susiderinti kalendorių, o ne todėl, kad taip geriau jums.</li>
+      <li><b>Stato pultą užpakalinėje salės dalyje</b>, iš kur nesimato veidų — ir vakaras vedamas aklai.</li>
+    </ul>
+    <p style="margin-top:26px"><b>Mes dirbame kitaip:</b></p>
+    <ul class="vlist">
+      <li>Muziką renkame pagal tai, kas vyksta salėje <b>tą minutę</b>.</li>
+      <li>Į aikštelę kviečiame tada, kai matome, kad žmonės jau pasiruošę — ne pagal grafiką.</li>
+      <li>Žaidimai naudojami taupiai ir tik ten, kur jie iš tikrųjų kelia nuotaiką.</li>
+      <li>Dirbame ta pačia sudėtimi — nuolat, ne nuo šventės iki šventės.</li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ══════ ORIGIN STORY + MISTAKES ══════ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Kaip aš prie to priėjau</p>
+    <h2>Man prireikė kelerių metų, kad suprasčiau, kur iš tikrųjų lūžta vakarai</h2>
+    <p>Pradėjau ne todėl, kad svajojau būti vedėju. Pradėjau todėl, kad manęs paprašė — vieną kartą, vienoje šventėje, kur žmogus neatvyko.</p>
+    <p>Ir tą pirmą kartą padariau beveik viską blogai.</p>
+    <p>Turėjau prisirašęs lapą su tekstais ir laikiausi jo taip, tarsi nuo to priklausytų gyvybė. Kai žmonės juokėsi ne ten, kur planavau, aš vis tiek skaičiau toliau. Kai aikštelė buvo tuščia, aš kviečiau garsiau. Grįžau namo įsitikinęs, kad tiesiog reikia geresnio scenarijaus.</p>
+    <p>Prireikė dar kelių dešimčių vakarų, kad pamatyčiau, jog problema visai ne scenarijuje. Štai trys klaidos, kurias dariau — ir kurias iki šiol matau daromas beveik kiekvienoje šventėje:</p>
+    <ul class="xlist">
+      <li><b>Vedžiau vakarą pagal lapą, o ne pagal salę.</b> Planas buvo teisingas. Tik jis buvo parašytas prieš mėnesį, žmonėms, kurių dar nepažinojau.</li>
+      <li><b>Dirbau su bet kuriuo DJ, kuris tą dieną buvo laisvas.</b> Galvojau, kad muzika — jo reikalas, o žodžiai — mano. Ir kaskart tarp mūsų atsirasdavo tos kelios tuščios sekundės, kurios ir nužudo šokius.</li>
+      <li><b>Kai nesigaudavo, spausdavau stipriau.</b> Daugiau kvietimų, daugiau konkursų, garsesnė muzika. Dabar žinau, kad tai lygiai tas pats, kas šaukti ant žmogaus, kad jis atsipalaiduotų.</li>
+    </ul>
+    <p class="big">Vakaras pasikeitė ne tada, kai išmokau geriau kalbėti. Jis pasikeitė tada, kai pradėjau dirbti su tuo pačiu DJ nuolat — ir nustojau vesti aklai.</p>
+  </div>
+</section>
+
+<!-- ══════ WHY YOU HAVEN'T HEARD THIS ══════ -->
+<section class="warm bordered">
+  <div class="wrap">
+    <h2>„Tai kodėl apie tai niekas nekalba?"</h2>
+    <p>Teisingas klausimas. Atsakymas nuobodus, bet sąžiningas: <b>todėl, kad tai neparduoda.</b></p>
+    <p>„Mes su DJ dirbame kartu nuolat" nėra frazė, kuri gerai atrodo reklamoje. Ji neatrodo kaip privalumas — ji atrodo kaip organizacinė smulkmena. Daug lengviau parduoti nuotraukas iš gražios salės, sąrašą paslaugų ir gerą kainą.</p>
+    <p>Ir dar viena priežastis: daugumai vedėjų taip tiesiog patogiau. Dirbti su tuo, kuris laisvas, — reiškia priimti daugiau užsakymų. Dirbti visada su tuo pačiu žmogumi — reiškia atsisakyti dalies datų.</p>
+    <p>Aš pasirinkau antrą variantą. Tai kainuoja man užsakymų, bet būtent dėl to jūsų vakare nėra tų tuščių sekundžių.</p>
+    <p class="big">Klausimas ne „kodėl apie tai negirdėjote". Klausimas — <b>ar norite, kad jūsų šventę vestų du žmonės, kurie susipažins jūsų dieną?</b></p>
+  </div>
+</section>
+
+<!-- ══════ SPECIAL MOMENT ══════ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Vakaro kulminacija</p>
+    <h2>Momentas, kurį žmonės prisimena po metų</h2>
+    <p>Techniką ir muziką galima nusipirkti. Bet tai, ką žmonės iš tikrųjų prisimena, dažniausiai nutinka per penkias minutes viso vakaro.</p>
+    <p>Vienas iš tokių momentų, kurį darome jubiliejuose ir apvalioms sukaktims: vėlyvą vakarą, kai visi jau atšilę, svečiai susirenka lauke prie ugnies. Kiekvienas gauna po saują <b>gintaro dulkių</b> ir savo palinkėjimą kaltininkui pasako tyliai, sau — o tada meta jas į liepsną. Ugnis akimirkai pakyla ir nusidažo.</p>
+    <p>Tai trunka kelias minutes. Bet po jų vakaras jau kitoks — ir visi tai pajunta.</p>
+    <p class="big">Aš neteigiu, kad tai magija. Tai tiesiog tinkamas dalykas tinkamu laiku — o tinkamą laiką galima atpažinti tik tada, kai visą vakarą stebi salę.</p>
+  </div>
+</section>
+
+<!-- ══════ HONEST DISCLAIMER (device 7) ══════ -->
+<section>
+  <div class="wrap">
+    <div class="note">
+      <h3>Prieš eidami toliau — perskaitykite tai</h3>
+      <p>Būsiu visiškai atviras. <b>Vedėjas nėra šventės garantija.</b></p>
+      <p>Jei salė šalta, maistas vėluoja dvi valandas, o pusė svečių išvažiuoja iki dešimtos — jokia muzika ir joks vedėjas to neišgelbės. Vakaro sėkmė priklauso ir nuo vietos, nuo laiko, nuo pačių svečių ir nuo daugybės dalykų, kurių aš nekontroliuoju.</p>
+      <p>Ką galiu pažadėti — kad iš mūsų pusės nebus tylos, chaoso ir improvizacijos ten, kur jos neturi būti. Ir kad jums tą vakarą nereikės nieko spręsti.</p>
+      <p>Jei ieškote garantijos, kad bus „geriausia šventė visų laikų" — tokios neduosiu, ir nepatikėčiau tam, kas duoda.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FUTURE-PACE + PERSONAL HELP ══════ -->
+<section class="warm bordered">
+  <div class="wrap">
+    <h2>Įsivaizduokite savo vakarą po trijų mėnesių</h2>
+    <p>Šeštadienis. Apie dvidešimt antra valanda.</p>
+    <p>Muzika ką tik pasikeitė, ir jūs net nepastebėjote, kada — tiesiog staiga prie aikštelės atsistojo dar penki žmonės.</p>
+    <p>Jūsų mama šoka su dėde, kurio nematė nuo praeitų metų. Draugai, kurie prieš valandą sakė „mes tik trumpam", jau nusiavė batus.</p>
+    <p>O jūs stovite šone su taure rankoje ir suprantate, kad <b>jau valandą nieko nesprendėte.</b> Niekas neklausė, kada tortas. Niekas nesiteiravo, kur mikrofonas.</p>
+    <p>Ir tada pagaunate save su mintimi, kurios laukėte visus tuos mėnesius: <b>„Pavyko."</b></p>
+    <p>Kaip tai paveiktų jūsų šventę? Ir — sąžiningai — kiek verta jums tai, kad tą vakarą jums nereikėtų nerimauti?</p>
+    <p class="big">Norėtumėte, kad taip atrodytų ir jūsų vakaras — su mano asmenine pagalba nuo pirmo pokalbio iki paskutinės dainos?</p>
+    <p>Jei taip, viskas, ką reikia padaryti, yra vienas skambutis. Ne užklausa, į kurią atsakoma po trijų dienų. Ne anketa. Vienas pokalbis, dešimt minučių, kurio metu pasakysiu iš karto: ar jūsų data laisva, ir ar mes jums tinkame.</p>
+  </div>
+</section>
+
+<!-- ══════ WHAT YOU GET (full) ══════ -->
+<section>
+  <div class="wrap">
+    <h2>Ką konkrečiai gaunate</h2>
+    <p>Nuo pirmo skambučio iki paskutinės dainos — viskas viename pakete, be atskirų sąskaitų ir be derinimo tarp kelių žmonių.</p>
+
+    <div class="offer">
+      <h3>Pilnas vakaro paketas</h3>
+      <div class="price-row">
+        <span class="price-now">750 €</span>
+        <span class="price-note">papildomos valandos, jei nuspręsite tęsti ilgiau — 150 €/val.</span>
+      </div>
+      <ul>
+        <li><b>Pokalbis prieš šventę</b> — scenarijus, laikai, ko norite ir ko tikrai nenorite</li>
+        <li><b>Renginio vedėjas</b> visam vakarui</li>
+        <li><b>DJ ir muzika</b> — nuo fono per vakarienę iki šokių</li>
+        <li><b>Įgarsinimas</b> — kolonėlės, mikrofonai, pultas</li>
+        <li><b>Apšvietimas</b> šokių aikštelei</li>
+        <li><b>Atvykimas ir sustatymas</b> gerokai prieš svečiams susirenkant</li>
+      </ul>
+      <a class="cta cta-full" href="tel:+37067472202">Skambinkite: +370 674 72202</a>
+      <p class="guar c">Pirmas pokalbis nemokamas ir neįpareigojantis.</p>
+    </div>
+
+    <p class="small muted">Kaina fiksuojama sutartyje prieš šventę. Jokių papildomų mokesčių už mikrofoną, už „ilgesnį" vakarą ar už atvykimą — nebent patys nuspręsite tęsti ilgiau, ir tada tai 150 € už valandą, kaip nurodyta aukščiau.</p>
+  </div>
+</section>
+
+
+<!-- ══════ WHAT I CAN PROMISE (honest risk reversal) ══════ -->
+<section class="warm bordered">
+  <div class="wrap">
+    <h2>Ką galiu pažadėti — ir ko ne</h2>
+    <p>Nesiūlau pinigų grąžinimo garantijos, nes šventės negalima „grąžinti" pirmadienį. Būtų nesąžininga žadėti tai, ko techniškai neįmanoma įvykdyti taip, kaip įsivaizduojama.</p>
+    <p>Užtat galiu pažadėti tai, kas priklauso nuo manęs:</p>
+    <ul class="vlist">
+      <li><b>Kaina nesikeis.</b> Ji fiksuojama sutartyje prieš renginį. Jokių papildomų eilučių už mikrofoną, atvykimą ar „ilgesnį" vakarą.</li>
+      <li><b>Atvyksime iš anksto.</b> Aparatūra ir šviesos sustatomos gerokai prieš svečiams susirenkant — ne jiems žiūrint.</li>
+      <li><b>Jūs nederinsite nieko šventės dieną.</b> Viskas suderinama iš anksto, viename pokalbyje, su vienu žmogumi.</li>
+      <li><b>Jei negalėčiau atvykti dėl ligos</b> — pranešu iš karto, padedu rasti pakaitalą iš žmonių, kurių darbu pasitikiu, ir avansas grąžinamas.</li>
+      <li><b>Pasakysiu, jei nesutampame.</b> Jei per pokalbį matysiu, kad jums reikia kitokio vakaro nei tas, kurį darau gerai, taip ir pasakysiu — nesistengdamas parduoti.</li>
+    </ul>
+    <p class="small muted">Tai nėra rinkodaros garantija. Tai tiesiog sąrašas dalykų, už kuriuos galite mane laikyti atsakingu.</p>
+  </div>
+</section>
+
+<!-- ══════ FAQ ══════ -->
+<section>
+  <div class="wrap">
+    <h2>Dažniausi klausimai</h2>
+    <div class="faq">
+      <details open>
+        <summary>O jei mūsų giminė tikrai nešoka?</summary>
+        <div class="ans"><p>Tai girdžiu bene dažniausiai — ir dažniausiai pasirodo netiesa. Žmonės nešoka ne todėl, kad nemoka, o todėl, kad niekas nesukūrė momento, kai tai natūralu. Jei po visko aikštelė vis tiek lieka tuščia, vakaras nesugriūva — tada svarbiau tampa pokalbiai, žaidimai ir tinkamas fonas, ir mes persiorientuojame į tai.</p></div>
+      </details>
+      <details>
+        <summary>Kaip galiu žinoti, kaip jūs dirbate, jei nemačiau?</summary>
+        <div class="ans"><p>Todėl šiame puslapyje yra vaizdo įrašai ir nuotraukos iš tikrų vakarų, o ne pozuotos nuotraukos. O per pirmą pokalbį galite klausti bet ko — įskaitant nepatogius klausimus apie tai, kas buvo nepavykę.</p></div>
+      </details>
+      <details>
+        <summary>Ar dirbate su vestuvėmis, ar tik su jubiliejais?</summary>
+        <div class="ans"><p>Su abiem, taip pat su įmonių šventėmis ir krikštynomis. Struktūra kiekvienam tipui skiriasi — vestuvėse daugiau ceremonijos ir tradicijų, jubiliejuose daugiau asmeninių momentų, įmonių šventėse svarbu, kad kolegos atsipalaiduotų ir nesijaustų kaip darbe.</p></div>
+      </details>
+      <details>
+        <summary>Kas atsitinka, jei susirgsite?</summary>
+        <div class="ans"><p>Sąžiningas atsakymas: tokiu atveju informuoju iš karto, kai tik sužinau, ir padedu rasti pakaitalą iš žmonių, kuriuos pažįstu ir kurių darbu pasitikiu. Sumokėtas avansas tokiu atveju grąžinamas. Tai reta situacija, bet apie ją geriau sutarti iš anksto, nei tikėtis, kad neįvyks.</p></div>
+      </details>
+      <details>
+        <summary>Kiek iš anksto reikia rezervuoti?</summary>
+        <div class="ans"><p>Kuo anksčiau, tuo geriau — vienai dienai priimu vieną renginį, tad populiarios vasaros šeštadienių datos išsiima pirmos. Bet jei jūsų data jau greitai, vis tiek paskambinkite: pasakysiu iš karto, laisva ji ar ne.</p></div>
+      </details>
+      <details>
+        <summary>Ar galima tik DJ, be vedėjo?</summary>
+        <div class="ans"><p>Galima, bet tada dingsta būtent tas dalykas, dėl kurio visa tai veikia — kad vedėjas ir DJ dirba kaip vienas. Paskambinkite, aptarsime, ką jums iš tikrųjų reikia, ir jei matysiu, kad jums užtenka vien DJ, taip ir pasakysiu.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════ THE "IF YOU'D PREFER" CLOSE ══════ -->
+<section>
+  <div class="wrap">
+    <h2>Sprendimas paprastas</h2>
+    <p>Jei norite ir toliau naršyti sąrašus, lyginti kainas ir bandyti iš nuotraukų atspėti, kaip tas žmogus dirba gyvai — aš jūsų nesustabdysiu.</p>
+    <p>Jei norite atskirai ieškoti vedėjo, atskirai DJ ir tikėtis, kad jie susigros jūsų dieną — irgi nesustabdysiu.</p>
+    <p>Jei norite likti su ta mintimi galvoje dar tris mėnesius iki šventės — tai jūsų teisė.</p>
+    <p class="big">Ką galiu padaryti — tai nuimti nuo jūsų tą klausimą per dešimt minučių pokalbio.</p>
+    <p>Vienas skambutis. Nemokamas. Neįpareigojantis. Jei nesutapsime — pasakysiu tiesiai ir net pasiūlysiu, ko ieškoti toliau.</p>
+  </div>
+</section>
+
+<!-- ══════ FINAL CLOSE ══════ -->
+<section class="warm bordered">
+  <div class="wrap">
+    <h2>Kitas žingsnis — dešimt minučių</h2>
+    <p>Ne užpildyti anketą. Ne laukti atsakymo tris dienas. Vienas skambutis, per kurį iš karto sužinosite tris dalykus:</p>
+    <ul class="vlist">
+      <li><b>Ar jūsų data laisva</b> — pasakau tą pačią minutę, be „patikrinsiu ir grįšiu".</li>
+      <li><b>Kiek tiksliai kainuos jūsų atveju</b> — su visais kaštais, be vėliau atsirandančių eilučių.</li>
+      <li><b>Ar mes apskritai jums tinkame</b> — ir jei ne, pasakysiu tiesiai, ko ieškoti toliau.</li>
+    </ul>
+    <p>Jokių įsipareigojimų po pokalbio. Jei nuspręsite, kad ne — tiesiog padedate ragelį, ir viskas.</p>
+
+    <div class="ctablock c">
+      <a class="cta" href="tel:+37067472202">Skambinkite: +370 674 72202</a>
+      <p class="guar">Pirmas pokalbis nemokamas ir neįpareigojantis.</p>
+    </div>
+
+    <hr class="soft">
+    <p class="small muted"><b>P.S.</b> Jei jūsų data jau artėja ir nerimaujate, kad vėluojate — paskambinkite vis tiek. Blogiausiu atveju pasakysiu, kad ta diena užimta, ir pasiūlysiu, ko ieškoti pas kitus. Tai jums nieko nekainuoja.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap c">
+    <p><b>Agentūra</b> — renginių vedėjas ir DJ viena komanda<br>
+    Vestuvės · jubiliejai · įmonių šventės · krikštynos — visoje Lietuvoje</p>
+    <p><a href="tel:+37067472202">+370 674 72202</a> · <a href="mailto:labas@agentura.lt">labas@agentura.lt</a></p>
+    <p class="small" style="margin-top:24px;color:#6D7581;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.55">
+      Šiame puslapyje pateikti vaizdo įrašai ir nuotraukos yra iš tikrų aptarnautų renginių. Kiekvienos šventės eiga ir svečių reakcija skiriasi — rezultatas priklauso ir nuo vietos, laiko, svečių bei kitų aplinkybių, kurių paslaugos teikėjas nekontroliuoja. Galutinė kaina ir sąlygos fiksuojamos sutartyje prieš renginį.
+    </p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <div class="s-price">Pilnas paketas<b>750 €</b></div>
+  <a class="cta" href="tel:+37067472202">Skambinti dabar</a>
+</div>
+
+<script>
+// Accordion: only one open at a time
+document.querySelectorAll('.faq details').forEach(function(d){
+  d.addEventListener('toggle', function(){
+    if(d.open){
+      document.querySelectorAll('.faq details').forEach(function(o){
+        if(o!==d) o.open=false;
+      });
+    }
+  });
+});
+// Ensure autoplay on iOS after interaction fallback
+document.querySelectorAll('video').forEach(function(v){
+  v.play().catch(function(){});
+});
+</script>
+</body>
+</html>
