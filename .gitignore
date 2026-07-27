@@ -1,5 +1,10 @@
 .streamlit/secrets.toml
 
+# Node / Wrangler
+node_modules/
+.wrangler/
+package-lock.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
