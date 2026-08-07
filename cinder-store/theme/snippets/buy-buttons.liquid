@@ -1,0 +1,61 @@
+{% comment %}
+  Shared buy form. Every CTA on the site renders this so there is exactly one
+  add-to-cart code path.
+
+  Uses Shopify's {% form 'product' %} tag rather than a hand-rolled <form>:
+  the payment_button filter only works inside it, and it emits the correct
+  action, enctype and hidden fields. cart.js intercepts it by action, so no
+  extra data attribute is needed.
+
+  Accepts:
+    product        - product object (required)
+    show_quantity  - render the qty stepper (default false)
+    label          - button label; "{price}" is substituted
+    show_dynamic   - render Shopify's dynamic checkout button (default false)
+{% endcomment %}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign price_str = product.price | money
+  assign cta_label = label | default: 'Add to cart — {price}'
+  assign cta_label = cta_label | replace: '{price}', price_str
+-%}
+
+{%- if product == blank -%}
+  <p class="notice-placeholder">
+    No product is connected yet. Pick one in <strong>Theme settings &rarr; Brand &rarr; The product</strong>.
+  </p>
+{%- else -%}
+  {%- form 'product', product -%}
+    <input type="hidden" name="id" value="{{ variant.id }}">
+
+    {%- if show_quantity -%}
+      <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+        <div class="qty">
+          <button type="button" data-qty-step="-1" aria-label="Decrease quantity">&minus;</button>
+          <input
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+            aria-label="Quantity"
+            data-qty-input>
+          <button type="button" data-qty-step="1" aria-label="Increase quantity">+</button>
+        </div>
+        <button type="submit" name="add" class="btn btn--primary" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}{{ cta_label }}{% else %}Sold out{% endif %}
+        </button>
+      </div>
+    {%- else -%}
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" name="add" class="btn btn--primary" {% unless product.available %}disabled{% endunless %}>
+        {% if product.available %}{{ cta_label }}{% else %}Sold out{% endif %}
+      </button>
+    {%- endif -%}
+
+    <p data-cart-error hidden style="color:var(--warn);font-size:14px;margin:10px 0 0"></p>
+
+    {%- if show_dynamic -%}
+      <div style="margin-top:12px">{{ form | payment_button }}</div>
+    {%- endif -%}
+  {%- endform -%}
+{%- endif -%}

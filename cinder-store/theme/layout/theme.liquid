@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; {{ 'general.meta.tags' | t: tags: current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {% comment %}
+      Schibsted Grotesk is self-hosted from theme assets rather than fetched from
+      Google Fonts (the handoff §6 assumed Google). It is a variable font, so the
+      whole 400–900 range is two subset files on Shopify's own CDN — one less
+      third-party origin to connect to on first paint.
+    {% endcomment %}
+    {{ 'schibsted-grotesk-latin.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+
+    {{ content_for_header }}
+
+    <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
+
+    {% comment %} Theme settings win over the defaults baked into base.css. {% endcomment %}
+    <style>
+      :root {
+        --ink: {{ settings.color_ink }};
+        --body: {{ settings.color_body }};
+        --muted: {{ settings.color_muted }};
+        --faint: {{ settings.color_faint }};
+        --line: {{ settings.color_line }};
+        --line-soft: {{ settings.color_line_soft }};
+        --surface: {{ settings.color_surface }};
+        --surface-warm: {{ settings.color_surface_warm }};
+        --ember: {{ settings.color_ember }};
+        --ember-dark: {{ settings.color_ember_dark }};
+        --warn: {{ settings.color_warn }};
+        --warn-bg: {{ settings.color_warn_bg }};
+        --ok: {{ settings.color_ok }};
+        --ok-bg: {{ settings.color_ok_bg }};
+      }
+    </style>
+
+    <script>
+      // Set before first paint so sections can branch on it without a reflow.
+      document.documentElement.classList.toggle(
+        'reduced-motion',
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      );
+      window.CinderMotion = {
+        reveal: {{ settings.enable_reveal | json }},
+        parallax: {{ settings.enable_parallax | json }}
+      };
+    </script>
+  </head>
+
+  <body class="template-{{ request.page_type | handle }}">
+    <a class="skip-link" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
+
+    <div id="prog" class="scroll-progress" aria-hidden="true"></div>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" role="main">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {% section 'cart-drawer' %}
+    {% render 'sticky-cta' %}
+
+    <script src="{{ 'motion.js' | asset_url }}" defer></script>
+    <script src="{{ 'cart.js' | asset_url }}" defer></script>
+  </body>
+</html>

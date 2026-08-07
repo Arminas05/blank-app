@@ -1,0 +1,27 @@
+<section class="section">
+  <div class="wrap" style="max-width:460px">
+    <h1 class="h2">Create an account</h1>
+    {%- form 'create_customer' -%}
+      {%- if form.errors -%}
+        <p class="form-status form-status--err">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+      <div class="field" style="margin-top:22px">
+        <label for="RegisterFirst">First name</label>
+        <input type="text" id="RegisterFirst" name="customer[first_name]" autocomplete="given-name">
+      </div>
+      <div class="field">
+        <label for="RegisterLast">Last name</label>
+        <input type="text" id="RegisterLast" name="customer[last_name]" autocomplete="family-name">
+      </div>
+      <div class="field">
+        <label for="RegisterEmail">Email</label>
+        <input type="email" id="RegisterEmail" name="customer[email]" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="RegisterPassword">Password</label>
+        <input type="password" id="RegisterPassword" name="customer[password]" autocomplete="new-password" required>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block">Create</button>
+    {%- endform -%}
+  </div>
+</section>

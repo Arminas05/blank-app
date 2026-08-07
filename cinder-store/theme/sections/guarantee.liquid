@@ -1,0 +1,65 @@
+<section class="section section--warm">
+  <div class="wrap">
+    <div class="two">
+      <div data-reveal style="display:flex;justify-content:center">
+        <div style="width:220px;height:220px;border-radius:50%;background:var(--ember);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center">
+          <strong style="font:900 76px/1 var(--font)">{{ section.settings.days }}</strong>
+          <span style="font:700 13px/1 var(--font);letter-spacing:.2em;margin-top:8px">DAYS</span>
+        </div>
+      </div>
+
+      <div data-reveal>
+        <h2 class="h2">{{ section.settings.heading }}</h2>
+        <p class="lede" style="margin-top:22px">{{ section.settings.body }}</p>
+
+        {%- if section.settings.link_label != blank -%}
+          <a class="link-underline" href="{{ section.settings.link_url | default: '/pages/returns' }}">
+            {{ section.settings.link_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Guarantee",
+  "settings": [
+    {
+      "type": "range",
+      "id": "days",
+      "label": "Guarantee days",
+      "min": 14,
+      "max": 365,
+      "step": 1,
+      "unit": "d",
+      "default": 60
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Clean your grill with it. If it doesn't beat your old brush, send it back."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Use it as many times as you want for 60 days. If it doesn't do what this page says, email us and we refund the full amount including any shipping you paid. Used, greasy, box long gone: doesn't matter. We don't ask you to ship a dirty grill brush back across the world, so for most returns we simply refund you."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Read the full guarantee"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [{ "name": "Guarantee" }]
+}
+{% endschema %}

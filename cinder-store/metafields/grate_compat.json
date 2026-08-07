@@ -1,0 +1,22 @@
+[
+  {
+    "surface": "Stainless steel bars",
+    "verdict": "Ideal",
+    "note": "Full pressure, no concerns."
+  },
+  {
+    "surface": "Bare cast iron",
+    "verdict": "Ideal",
+    "note": "Re-oil after cleaning as you normally would."
+  },
+  {
+    "surface": "Porcelain-coated",
+    "verdict": "Test first",
+    "note": "Test a back corner first, use light pressure and keep moving. Stainless wire can mark a chipped coating."
+  },
+  {
+    "surface": "Ceramic or enamel",
+    "verdict": "Not recommended",
+    "note": "Use the scraper edge or a nylon tool instead."
+  }
+]

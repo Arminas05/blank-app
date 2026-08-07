@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": { "type": "vendor", "settings": {} },
+        "title": { "type": "title", "settings": {} },
+        "description": { "type": "description", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "rating": { "type": "rating", "settings": {} },
+        "buy": { "type": "buy", "settings": {} },
+        "trust": { "type": "trust", "settings": {} },
+        "safety": { "type": "safety", "settings": {} }
+      },
+      "block_order": ["vendor", "title", "description", "price", "rating", "buy", "trust", "safety"],
+      "settings": {}
+    },
+    "compat": { "type": "grate-compat", "settings": {} },
+    "guarantee": { "type": "guarantee", "settings": {} },
+    "faq": { "type": "faq", "settings": { "limit": 6, "more_label": "All questions", "more_url": "/pages/faq" } }
+  },
+  "order": ["main", "compat", "guarantee", "faq"]
+}

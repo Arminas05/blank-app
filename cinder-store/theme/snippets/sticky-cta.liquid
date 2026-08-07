@@ -1,0 +1,20 @@
+{% comment %}
+  Mobile-only bottom bar. Shown by motion.js past a scroll threshold; hidden
+  entirely at >=760px by CSS so it can never cover desktop content.
+{% endcomment %}
+{%- assign sticky_product = settings.featured_product -%}
+{%- if sticky_product == blank -%}
+  {%- assign sticky_product = collections.all.products.first -%}
+{%- endif -%}
+
+{%- if sticky_product != blank and sticky_product.available -%}
+  <div class="sticky-cta">
+    <form method="post" action="{{ routes.cart_add_url }}" data-add-to-cart>
+      <input type="hidden" name="id" value="{{ sticky_product.selected_or_first_available_variant.id }}">
+      <input type="hidden" name="quantity" value="1">
+      <button type="submit" class="btn btn--primary btn--block">
+        Add to cart &mdash; {{ sticky_product.price | money }}
+      </button>
+    </form>
+  </div>
+{%- endif -%}

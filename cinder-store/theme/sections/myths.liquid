@@ -1,0 +1,103 @@
+<section class="section">
+  <div class="wrap">
+    <div data-reveal style="max-width:72ch">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div style="margin-top:40px;display:grid;gap:0;max-width:80ch">
+      {%- for block in section.blocks -%}
+        <div
+          data-reveal
+          {{ block.shopify_attributes }}
+          style="padding:22px 0;border-bottom:1px solid var(--line-soft)">
+          <p style="margin:0 0 8px;font:700 17px/1.5 var(--font);color:var(--ink)">
+            &ldquo;{{ block.settings.claim }}&rdquo;
+          </p>
+          <p style="margin:0;font:400 16px/1.7 var(--font);color:var(--body)">
+            {{ block.settings.reality }}
+          </p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.closer != blank -%}
+      <p
+        data-reveal
+        style="margin:32px 0 0;max-width:72ch;font:500 17px/1.7 var(--font);color:var(--ink)">
+        {{ section.settings.closer }}
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Myths",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The advice everyone repeats"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Half of what the grilling blogs tell you doesn't survive contact with a real grate."
+    },
+    {
+      "type": "textarea",
+      "id": "closer",
+      "label": "Closer",
+      "default": "All of it works around the same missing thing: sustained mechanical force. That's the only part we set out to solve."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "myth",
+      "name": "Myth",
+      "settings": [
+        { "type": "text", "id": "claim", "label": "Claim" },
+        { "type": "textarea", "id": "reality", "label": "Reality" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Myths",
+      "blocks": [
+        {
+          "type": "myth",
+          "settings": {
+            "claim": "Burn it off on high for 15 minutes.",
+            "reality": "That carbonises the grease into a harder deposit and burns through gas. It makes the grate look cleaner and be dirtier."
+          }
+        },
+        {
+          "type": "myth",
+          "settings": {
+            "claim": "Use half an onion.",
+            "reality": "Fine for a light seasoning film. Useless against three weekends of chicken skin."
+          }
+        },
+        {
+          "type": "myth",
+          "settings": {
+            "claim": "Ball up some foil.",
+            "reality": "Better than nothing, and a good way to burn your fingertips through tongs."
+          }
+        },
+        {
+          "type": "myth",
+          "settings": {
+            "claim": "Soak the grates overnight.",
+            "reality": "Now you have two cast-iron grates in the bathtub and a conversation with your spouse."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

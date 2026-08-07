@@ -1,0 +1,78 @@
+{% comment %}
+  Generic product list. This is a one-product store, so collection, search and
+  the collection index all render the same simple grid rather than three
+  bespoke layouts.
+{% endcomment %}
+{%- liquid
+  case section.settings.source
+    when 'search'
+      assign items = search.results
+      assign title = 'Search results'
+    else
+      assign items = collection.products
+      assign title = collection.title | default: 'Products'
+  endcase
+-%}
+
+<section class="section">
+  <div class="wrap">
+    <h1 class="h2">{{ title }}</h1>
+
+    {%- if section.settings.source == 'search' -%}
+      <form action="{{ routes.search_url }}" method="get" role="search" style="margin-top:24px;max-width:460px">
+        <div class="field">
+          <label for="SearchInput">Search</label>
+          <input type="search" id="SearchInput" name="q" value="{{ search.terms | escape }}">
+        </div>
+        <button type="submit" class="btn btn--ghost">Search</button>
+      </form>
+    {%- endif -%}
+
+    {%- if items.size == 0 -%}
+      <p class="lede" style="margin-top:24px">Nothing to show here.</p>
+    {%- else -%}
+      <div class="grid-3" style="margin-top:36px">
+        {%- for item in items -%}
+          {%- if item.object_type == 'product' or item.price -%}
+            <a href="{{ item.url }}" style="display:block">
+              <div style="border:1px solid var(--line-soft);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);aspect-ratio:1">
+                {%- if item.featured_image -%}
+                  <img
+                    src="{{ item.featured_image | image_url: width: 800 }}"
+                    alt="{{ item.featured_image.alt | default: item.title | escape }}"
+                    width="400"
+                    height="400"
+                    loading="lazy"
+                    style="width:100%;height:100%;object-fit:cover;display:block">
+                {%- endif -%}
+              </div>
+              <h2 class="h3" style="margin-top:14px;font-size:18px">{{ item.title }}</h2>
+              <p style="margin:6px 0 0;font:700 16px/1 var(--font);color:var(--ink)">
+                {{ item.price | money }}
+              </p>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product list",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Source",
+      "options": [
+        { "value": "collection", "label": "Collection" },
+        { "value": "search", "label": "Search results" }
+      ],
+      "default": "collection"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="wrap" style="max-width:760px">
+    <h1 class="h2">{{ article.title }}</h1>
+    <p style="margin:12px 0 0;font:400 14px/1.6 var(--font);color:var(--faint)">
+      {{ article.published_at | date: '%d %b %Y' }}
+    </p>
+    <div class="rte" style="margin-top:28px">{{ article.content }}</div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Article", "tag": "section", "settings": [] }
+{% endschema %}

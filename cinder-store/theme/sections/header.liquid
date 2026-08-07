@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="{{ routes.root_url }}">{{ settings.brand_name }}</a>
+
+    <nav class="site-nav" role="navigation" aria-label="Primary">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <button class="cart-toggle" type="button" data-cart-open aria-label="Open cart">
+      Cart
+      <span class="cart-toggle__count" data-cart-count>{{ cart.item_count }}</span>
+    </button>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

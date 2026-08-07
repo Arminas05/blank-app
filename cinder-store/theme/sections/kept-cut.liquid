@@ -1,0 +1,113 @@
+<section class="section section--surface">
+  <div class="wrap">
+    <div data-reveal>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div style="margin-top:44px;display:grid;gap:14px">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          if block.type == 'kept'
+            assign mark = '✓'
+            assign mark_color = settings.color_ok
+          else
+            assign mark = '✕'
+            assign mark_color = settings.color_warn
+          endif
+        -%}
+        <div
+          data-reveal
+          {{ block.shopify_attributes }}
+          style="display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;background:#fff;border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:20px 22px">
+          <span
+            aria-hidden="true"
+            style="font:700 17px/1.4 var(--font);color:{{ mark_color }}">
+            {{ mark }}
+          </span>
+          <p style="margin:0;font:400 15px/1.7 var(--font);color:var(--body)">
+            <strong style="color:var(--ink)">
+              {% if block.type == 'kept' %}Kept{% else %}Cut{% endif %}:
+            </strong>
+            {{ block.settings.text }}
+          </p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kept / cut",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "What we kept, what we cut"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything a grill brush is usually bad at."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "kept",
+      "name": "Kept",
+      "settings": [{ "type": "textarea", "id": "text", "label": "Text" }]
+    },
+    {
+      "type": "cut",
+      "name": "Cut",
+      "settings": [{ "type": "textarea", "id": "text", "label": "Text" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kept / cut",
+      "blocks": [
+        {
+          "type": "kept",
+          "settings": {
+            "text": "real force. A motor applies consistent pressure at a consistent speed. Your arm does not, especially by bar number twelve."
+          }
+        },
+        {
+          "type": "kept",
+          "settings": {
+            "text": "a head that comes off. Released with the wrench in the box in about five seconds. The safety story of a wire brush is entirely about whether you can see the wire."
+          }
+        },
+        {
+          "type": "kept",
+          "settings": {
+            "text": "USB-C. Same cable as your phone. Two hours on the counter, then roughly a month of weekend cooking."
+          }
+        },
+        {
+          "type": "cut",
+          "settings": {
+            "text": "chemicals. No degreaser, no soaking tub, nothing that has to be rinsed off before food touches metal again."
+          }
+        },
+        {
+          "type": "cut",
+          "settings": {
+            "text": "the proprietary cable. Nothing here depends on a part only we sell."
+          }
+        },
+        {
+          "type": "cut",
+          "settings": {
+            "text": "the hot-grill claim. It says DO NOT USE ON HOT GRILL right on the housing, and we mean it. Heat wrecks wire and warps plastic. Warm grate, every time."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

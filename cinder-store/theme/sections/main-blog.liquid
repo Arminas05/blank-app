@@ -1,0 +1,24 @@
+<section class="section">
+  <div class="wrap">
+    <h1 class="h2">{{ blog.title }}</h1>
+    <div class="grid-3" style="margin-top:36px">
+      {%- for article in blog.articles -%}
+        <a href="{{ article.url }}" style="display:block">
+          <h2 class="h3">{{ article.title }}</h2>
+          <p style="margin:8px 0 0;font:400 14px/1.6 var(--font);color:var(--faint)">
+            {{ article.published_at | date: '%d %b %Y' }}
+          </p>
+          <p style="margin:10px 0 0;font:400 15px/1.7 var(--font);color:var(--body)">
+            {{ article.excerpt_or_content | strip_html | truncate: 160 }}
+          </p>
+        </a>
+      {%- else -%}
+        <p class="lede">No posts yet.</p>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Blog", "tag": "section", "settings": [] }
+{% endschema %}

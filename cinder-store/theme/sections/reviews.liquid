@@ -1,0 +1,206 @@
+{% comment %}
+  Reviews.
+
+  The prototype shipped nine synthetic reviews. They are deliberately NOT ported
+  here as preset defaults: the FTC treats invented testimonials as deceptive
+  advertising, and a theme preset would put them live the moment the section is
+  added. See SHOPIFY-HANDOFF.md §3.
+
+  Two supported paths:
+    1. Add a review app (Judge.me / Loox / Okendo) as an app block below — the
+       summary and cards here get out of its way.
+    2. Add "Review" blocks manually from reviews you actually collected.
+
+  Until one of those happens the section renders a merchant-only warning and no
+  customer-facing testimony.
+{% endcomment %}
+{%- liquid
+  assign has_app_block = false
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_block = true
+    endif
+  endfor
+
+  assign review_blocks = section.blocks | where: 'type', 'review'
+  assign rating = settings.rating_value
+  assign count = settings.review_count
+  assign sold = settings.sold_count
+-%}
+
+<section class="section">
+  <div class="wrap">
+    <div data-reveal>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+    </div>
+
+    {%- if section.settings.show_summary -%}
+      <div
+        class="two"
+        data-reveal
+        style="margin-top:40px;align-items:start;gap:40px">
+        <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+          <strong style="font:900 56px/1 var(--font);color:var(--ink)">{{ rating }}</strong>
+          <div>
+            <div class="stars" style="font-size:20px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <p style="margin:6px 0 0;font:500 14px/1.5 var(--font);color:var(--muted)">
+              {{ count }} ratings &middot; {{ sold }}+ sold
+            </p>
+          </div>
+        </div>
+
+        <div>
+          {%- assign distribution_rows = section.settings.distribution | split: ',' -%}
+          {%- for row in distribution_rows -%}
+            {%- assign parts = row | split: ':' -%}
+            <div class="rating-bar">
+              <span>{{ parts[0] }}&#9733;</span>
+              <span class="rating-bar__track">
+                <span class="rating-bar__fill" style="width:{{ parts[1] }}%"></span>
+              </span>
+              <span>{{ parts[1] }}%</span>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if has_app_block -%}
+      <div style="margin-top:44px">
+        {%- for block in section.blocks -%}
+          {%- if block.type == '@app' -%}
+            {% render block %}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- elsif review_blocks.size > 0 -%}
+      <div class="grid-3" style="margin-top:44px">
+        {%- for block in review_blocks -%}
+          <article class="review-card" data-reveal {{ block.shopify_attributes }}>
+            <div class="stars">
+              {%- assign filled = block.settings.stars | plus: 0 -%}
+              {%- for i in (1..5) -%}
+                {%- if i <= filled %}&#9733;{% else %}&#9734;{% endif -%}
+              {%- endfor -%}
+            </div>
+
+            {%- if block.settings.verified -%}
+              <p style="margin:12px 0 0"><span class="badge-ok">Verified purchase</span></p>
+            {%- endif -%}
+
+            <h3 class="h3" style="margin-top:14px;font-size:17px">{{ block.settings.heading }}</h3>
+            <p style="margin:12px 0 16px;font:400 15px/1.7 var(--font);color:var(--body)">
+              {{ block.settings.body }}
+            </p>
+
+            <p class="review-card__meta" style="margin:0">
+              <strong style="color:var(--ink)">{{ block.settings.author }}</strong><br>
+              {{ block.settings.location }} &middot; {{ block.settings.date }}
+            </p>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      {%- if request.design_mode -%}
+        <div class="notice-warn" style="margin-top:40px">
+          <strong>No reviews connected</strong>
+          Add a review app block, or add Review blocks from reviews you have actually
+          collected. Do not paste in sample copy — invented testimonials are deceptive
+          advertising under FTC rules. This message is only visible to you in the editor.
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+      <div
+        data-reveal
+        style="margin-top:40px;border-top:1px solid var(--line-soft);padding-top:26px;max-width:72ch">
+        <h3 class="h3" style="font-size:17px">{{ section.settings.disclaimer_heading }}</h3>
+        <p style="margin:12px 0 0;font:400 15px/1.7 var(--font);color:var(--muted)">
+          {{ section.settings.disclaimer }}
+        </p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Customers"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What people actually said."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Show rating summary",
+      "info": "Numbers come from Theme settings → Social proof defaults. Replace them with real figures before launch.",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "distribution",
+      "label": "Star distribution",
+      "info": "star:percent, comma separated.",
+      "default": "5:76,4:16,3:5,2:2,1:2"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer_heading",
+      "label": "Disclaimer heading",
+      "default": "Straight talk about results"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "Results vary with grill type, how baked-on the residue is and how long it's been since the last clean. A grate that hasn't been touched in four years takes more than one pass, and some carbon is permanent. Customer stories describe those individuals' experience and are not a promise of yours."
+    }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Only add reviews you have genuinely collected."
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        { "type": "text", "id": "heading", "label": "Headline" },
+        { "type": "textarea", "id": "body", "label": "Body" },
+        { "type": "text", "id": "author", "label": "Author" },
+        { "type": "text", "id": "location", "label": "Location" },
+        { "type": "text", "id": "date", "label": "Date" },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified purchase",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Reviews" }]
+}
+{% endschema %}

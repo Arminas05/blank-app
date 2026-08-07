@@ -1,0 +1,111 @@
+{% comment %}
+  Proof video.
+
+  Sources are ordered webm first, mp4 second: the browser picks the first type
+  it can play, so Chrome/Firefox take the smaller VP8 file and Safari — which
+  does not reliably decode VP8 on iOS — falls through to H.264. Dropping the
+  mp4 would silently break the video for every iPhone visitor.
+
+  preload="none" keeps a ~12 MB asset off the critical path; motion.js starts
+  playback only once the panel is actually on screen.
+{% endcomment %}
+<section class="section section--surface">
+  <div class="wrap">
+    <div class="two">
+      <div data-reveal>
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2 class="h2">{{ section.settings.heading }}</h2>
+        <p class="lede" style="margin-top:22px">{{ section.settings.body }}</p>
+
+        {%- if section.settings.caption != blank -%}
+          <p style="font:400 14px/1.7 var(--font);color:var(--faint)">{{ section.settings.caption }}</p>
+        {%- endif -%}
+      </div>
+
+      <div
+        class="sticky"
+        style="position:relative;border-radius:var(--radius);overflow:hidden;background:#fff;border:1px solid var(--line-soft)"
+        data-reveal>
+        {%- if section.settings.video_webm != blank or section.settings.video_mp4 != blank -%}
+          <video
+            data-proof-video
+            playsinline
+            muted
+            loop
+            preload="none"
+            {% if section.settings.poster != blank %}
+              poster="{{ section.settings.poster | image_url: width: 1400 }}"
+            {% endif %}
+            style="width:100%;height:auto;display:block">
+            {%- if section.settings.video_webm != blank -%}
+              <source src="{{ section.settings.video_webm }}" type="video/webm">
+            {%- endif -%}
+            {%- if section.settings.video_mp4 != blank -%}
+              <source src="{{ section.settings.video_mp4 }}" type="video/mp4">
+            {%- endif -%}
+            Your browser cannot play this video.
+          </video>
+        {%- else -%}
+          <p class="notice-placeholder" style="margin:24px">
+            Upload <code>r1-proof.webm</code> and <code>r1-proof.mp4</code> to
+            <strong>Content &rarr; Files</strong>, then paste both CDN URLs into this section.
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Proof video",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Proof"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The head comes off. Here's what that looks like."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Hold the unlock button, turn the wrench, pull. Ten seconds, and you can look at the wire under a light before you cook on the grate."
+    },
+    {
+      "type": "header",
+      "content": "Video files"
+    },
+    {
+      "type": "text",
+      "id": "video_webm",
+      "label": "WebM URL",
+      "info": "Upload to Content → Files and paste the CDN URL. Served first where supported."
+    },
+    {
+      "type": "text",
+      "id": "video_mp4",
+      "label": "MP4 URL",
+      "info": "Required for iOS Safari, which does not reliably play VP8 WebM."
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Poster image"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption",
+      "default": "Supplier footage. Confirm licensing before launch."
+    }
+  ],
+  "presets": [{ "name": "Proof video" }]
+}
+{% endschema %}

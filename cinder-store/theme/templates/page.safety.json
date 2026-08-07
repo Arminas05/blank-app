@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "main": { "type": "main-page", "settings": { "eyebrow": "Read this one" } },
+    "compat": { "type": "grate-compat", "settings": {} }
+  },
+  "order": ["main", "compat"]
+}

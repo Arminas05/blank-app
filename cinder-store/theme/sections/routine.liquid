@@ -1,0 +1,96 @@
+<section class="section section--warm">
+  <div class="wrap">
+    <div data-reveal>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+      <p class="lede" style="margin-top:22px">{{ section.settings.intro }}</p>
+    </div>
+
+    <div class="grid-4" style="margin-top:48px">
+      {%- for block in section.blocks -%}
+        <div
+          data-reveal
+          {{ block.shopify_attributes }}
+          style="background:#fff;border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:26px">
+          <strong style="font:800 15px/1 var(--font);color:var(--ember);letter-spacing:.08em">
+            {{ forloop.index | prepend: '0' | slice: -2, 2 }}
+          </strong>
+          <p style="margin:16px 0 0;font:400 15px/1.7 var(--font);color:var(--body)">
+            {{ block.settings.text }}
+          </p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "The routine",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The routine"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You know exactly how this goes."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Nobody cleans a grill because they want to. They clean it because people are coming over in forty minutes and the grate looks like the floor of a fireplace."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "The routine",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "text": "You fire it up to burn the gunk off. Twenty minutes of gas later the grate is grey on top and still black underneath."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "text": "You go at it with the $9 brush. Three minutes in the bristles are splayed sideways and you're pushing carbon around instead of removing it."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "text": "You lean harder. Your knuckle finds the lid. You decide the back two bars are fine."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "text": "Next cook, the burgers taste faintly of the salmon from two weeks ago. The layer gets thicker. So does the excuse."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
