@@ -36,10 +36,15 @@
     document.body.style.overflow = '';
   }
 
-  /* Re-render the drawer and the header count from the server so the markup
-     stays in Liquid. Falls back to a full reload if the fetch fails. */
+  /* Re-render the drawer from Liquid, and take the item count from /cart.js.
+     Two requests, deliberately: the badge lives in the header section, not in
+     the drawer, so scraping it out of the drawer response would always find
+     nothing and the count would sit stale until a reload. /cart.js is the
+     authoritative number and does not depend on section IDs resolving. */
   function refresh() {
-    return fetch('?sections=cart-drawer', { headers: { Accept: 'application/json' } })
+    var drawerHtml = fetch('?sections=cart-drawer', {
+      headers: { Accept: 'application/json' }
+    })
       .then(function (r) {
         if (!r.ok) throw new Error('section fetch failed: ' + r.status);
         return r.json();
@@ -48,7 +53,6 @@
         var html = data['cart-drawer'];
         if (!html) return;
         var parsed = new DOMParser().parseFromString(html, 'text/html');
-
         var freshDrawer = parsed.querySelector('[data-cart-drawer]');
         var liveDrawer = document.querySelector('[data-cart-drawer]');
         if (freshDrawer && liveDrawer) {
@@ -56,16 +60,23 @@
           liveDrawer.innerHTML = freshDrawer.innerHTML;
           if (wasOpen) liveDrawer.classList.add('is-open');
         }
-
-        var freshCount = parsed.querySelector('[data-cart-count]');
-        document.querySelectorAll('[data-cart-count]').forEach(function (el) {
-          if (freshCount) el.textContent = freshCount.textContent;
-        });
-      })
-      .catch(function (err) {
-        console.warn('[grillingbrush] cart refresh failed, reloading', err);
-        window.location.reload();
       });
+
+    var count = fetch('/cart.js', { headers: { Accept: 'application/json' } })
+      .then(function (r) {
+        if (!r.ok) throw new Error('cart.js failed: ' + r.status);
+        return r.json();
+      })
+      .then(function (cart) {
+        document.querySelectorAll('[data-cart-count]').forEach(function (el) {
+          el.textContent = cart.item_count;
+        });
+      });
+
+    return Promise.all([drawerHtml, count]).catch(function (err) {
+      console.warn('[grillingbrush] cart refresh failed, reloading', err);
+      window.location.reload();
+    });
   }
 
   function setBusy(form, state) {
