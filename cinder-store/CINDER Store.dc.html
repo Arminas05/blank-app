@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CINDER R1 — Electric Grill Brush</title>
+<!-- Vendored so the page boots offline; support.js skips its CDN fetch when both globals exist. -->
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* latin-ext */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Schibsted Grotesk';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("fonts/schibsted-grotesk-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fff;font-family:'Schibsted Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#12100E;text-decoration:none}
+a:hover{color:#E8590C}
+::selection{background:#E8590C;color:#fff}
+input,button,select,textarea{font-family:inherit}
+@keyframes riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes drawerIn{from{transform:translateX(100%)}to{transform:none}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(232,89,12,.35)}70%{box-shadow:0 0 0 16px rgba(232,89,12,0)}100%{box-shadow:0 0 0 0 rgba(232,89,12,0)}}
+@media(max-width:900px){.two{grid-template-columns:1fr !important}.sticky{position:static !important}.hidem{display:none !important}}
+</style>
+</helmet>
+
+<div id="prog" style="position:fixed;top:0;left:0;height:2px;width:0%;background:#E8590C;z-index:120"></div>
+
+<header style="position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid #EDEAE5">
+<div style="max-width:1240px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;gap:26px">
+<a href="#top" sc-camel-on-click="{{ goHome }}" style="font:900 19px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.16em;color:#12100E;display:flex;align-items:center;gap:9px"><span style="width:9px;height:9px;border-radius:50%;background:#E8590C;display:inline-block"></span>CINDER</a>
+<nav class="hidem" style="display:flex;gap:22px;margin-left:10px">
+<a href="#product" sc-camel-on-click="{{ goProduct }}" style="font:500 14.5px/1 'Schibsted Grotesk',sans-serif;color:#54504B">The Brush</a>
+<a href="#safety" sc-camel-on-click="{{ goSafety }}" style="font:500 14.5px/1 'Schibsted Grotesk',sans-serif;color:#54504B">Safety &amp; Care</a>
+<a href="#faq" sc-camel-on-click="{{ goFaq }}" style="font:500 14.5px/1 'Schibsted Grotesk',sans-serif;color:#54504B">FAQ</a>
+<a href="#shipping" sc-camel-on-click="{{ goShipping }}" style="font:500 14.5px/1 'Schibsted Grotesk',sans-serif;color:#54504B">Shipping</a>
+<a href="#returns" sc-camel-on-click="{{ goReturns }}" style="font:500 14.5px/1 'Schibsted Grotesk',sans-serif;color:#54504B">Guarantee</a>
+</nav>
+<div style="flex:1"></div>
+<button sc-camel-on-click="{{ openCart }}" style="display:flex;align-items:center;gap:9px;background:#12100E;color:#fff;border:0;border-radius:9px;padding:11px 17px;font:600 14px/1 'Schibsted Grotesk',sans-serif;cursor:pointer;transition:background .2s ease" style-hover="background:#E8590C">Cart<span style="background:rgba(255,255,255,.2);border-radius:20px;padding:2px 8px;font-size:12.5px">{{ cartCount }}</span></button>
+</div>
+</header>
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main>
+<section style="max-width:1240px;margin:0 auto;padding:56px 24px 0;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center" class="two">
+<div style="animation:riseIn .8s cubic-bezier(.22,1,.36,1) both">
+<sc-if value="{{ hA }}" hint-placeholder-val="{{ true }}">
+<h1 style="font:800 clamp(38px,5.4vw,68px)/1.02 'Schibsted Grotesk',sans-serif;letter-spacing:-.042em;color:#12100E;margin:0 0 22px;text-wrap:balance">Strip a season of carbon off your grates in 90 seconds — using a motor, without scrubbing, soaking or a sore shoulder.</h1>
+</sc-if>
+<sc-if value="{{ hB }}" hint-placeholder-val="{{ false }}">
+<h1 style="font:800 clamp(38px,5.4vw,68px)/1.02 'Schibsted Grotesk',sans-serif;letter-spacing:-.042em;color:#12100E;margin:0 0 22px;text-wrap:balance">Bare-metal grates in 90 seconds. Even if yours haven't been touched in four years.</h1>
+</sc-if>
+<sc-if value="{{ hC }}" hint-placeholder-val="{{ false }}">
+<h1 style="font:800 clamp(38px,5.4vw,68px)/1.02 'Schibsted Grotesk',sans-serif;letter-spacing:-.042em;color:#12100E;margin:0 0 22px;text-wrap:balance">Forget the elbow grease. A motor does the scrubbing, you just steer.</h1>
+</sc-if>
+<p style="font:400 18.5px/1.62 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 30px;max-width:52ch;text-wrap:pretty">A cordless motor spins a stainless head against the grate so you don't have to lean on it. One charge covers a month of cooking, and the head comes off with the wrench in the box so you can look at the wire before you cook — the part most brushes get wrong.</p>
+<div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:22px">
+<button data-mag="" sc-camel-on-click="{{ addToCart }}" style="background:#E8590C;color:#fff;border:0;border-radius:11px;padding:19px 34px;font:700 17px/1 'Schibsted Grotesk',sans-serif;cursor:pointer;box-shadow:0 10px 26px -10px rgba(232,89,12,.75);transition:transform .18s ease,background .2s ease" style-hover="background:#C2410C;transform:translateY(-2px)">Add to cart — {{ selPriceStr }}</button>
+<a href="#product" sc-camel-on-click="{{ goProduct }}" style="font:600 15.5px/1 'Schibsted Grotesk',sans-serif;color:#12100E;border-bottom:1.5px solid #D6D2CC;padding-bottom:3px">See how it's built</a>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:9px">
+<span style="font:500 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;background:#F7F6F4;border-radius:7px;padding:9px 13px">{{ gDays }}-day money back</span>
+<span style="font:500 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;background:#F7F6F4;border-radius:7px;padding:9px 13px">Free US shipping</span>
+<span style="font:500 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;background:#F7F6F4;border-radius:7px;padding:9px 13px">Tracked, typically 10–14 days</span>
+<span style="font:500 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;background:#F7F6F4;border-radius:7px;padding:9px 13px">Duties paid at checkout</span>
+</div>
+</div>
+<div style="position:relative;animation:riseIn .9s .12s cubic-bezier(.22,1,.36,1) both">
+<div data-tilt="" data-parallax="0.05" style="position:absolute;inset:6% 4%;background:radial-gradient(circle at 50% 45%,#F4F1EC 0%,rgba(255,255,255,0) 68%);border-radius:50%;will-change:transform"></div>
+<div style="position:relative;border-radius:20px;overflow:hidden;background:#fff">
+<img src="uploads/r1-hero.webp" alt="CINDER R1 electric grill brush" style="width:100%;display:block">
+</div>
+<div style="position:absolute;right:2px;bottom:14px;background:#fff;border:1px solid #EDEAE5;border-radius:13px;padding:14px 17px;box-shadow:0 18px 40px -22px rgba(0,0,0,.35)">
+<div style="font:800 25px/1 'Schibsted Grotesk',sans-serif;color:#12100E;letter-spacing:-.03em">90<span style="font-size:14px;font-weight:600;color:#78716C"> sec</span></div>
+<div style="font:500 12px/1 'Schibsted Grotesk',sans-serif;color:#78716C;margin-top:5px">full grate, both sides</div>
+</div>
+</div>
+</section>
+
+<div style="overflow:hidden;border-top:1px solid #EDEAE5;border-bottom:1px solid #EDEAE5;margin-top:64px;background:#FCFBFA">
+<div style="display:flex;width:max-content;animation:marq 34s linear infinite">
+<div style="display:flex;gap:40px;padding:17px 20px;align-items:center">
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">DETACHABLE HEAD — REPLACE, DON'T RISK IT</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">THICKENED STAINLESS WIRE</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">USB-C RECHARGEABLE</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">BUILT-IN STEEL SCRAPER</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+</div>
+<div style="display:flex;gap:40px;padding:17px 20px;align-items:center">
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">DETACHABLE HEAD — REPLACE, DON'T RISK IT</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">THICKENED STAINLESS WIRE</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">USB-C RECHARGEABLE</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.05em;color:#57534E;white-space:nowrap">BUILT-IN STEEL SCRAPER</span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#E8590C">·</span>
+</div>
+</div>
+</div>
+
+<section style="max-width:1240px;margin:0 auto;padding:104px 24px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);max-width:820px">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">The routine</span>
+<h2 style="font:800 clamp(30px,4.3vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.038em;color:#12100E;margin:16px 0 22px;text-wrap:balance">You know exactly how this goes.</h2>
+<p style="font:400 18px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0;max-width:60ch;text-wrap:pretty">Nobody cleans a grill because they want to. They clean it because people are coming over in forty minutes and the grate looks like the floor of a fireplace.</p>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:#EDEAE5;border:1px solid #EDEAE5;border-radius:16px;overflow:hidden;margin-top:44px">
+<div style="background:#fff;padding:32px 28px">
+<div style="font:800 13px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;letter-spacing:.1em;margin-bottom:14px">01</div>
+<p style="font:400 16px/1.62 'Schibsted Grotesk',sans-serif;color:#44403C;margin:0">You fire it up to burn the gunk off. Twenty minutes of gas later the grate is grey on top and still black underneath.</p>
+</div>
+<div style="background:#fff;padding:32px 28px">
+<div style="font:800 13px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;letter-spacing:.1em;margin-bottom:14px">02</div>
+<p style="font:400 16px/1.62 'Schibsted Grotesk',sans-serif;color:#44403C;margin:0">You go at it with the $9 brush. Three minutes in the bristles are splayed sideways and you're pushing carbon around instead of removing it.</p>
+</div>
+<div style="background:#fff;padding:32px 28px">
+<div style="font:800 13px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;letter-spacing:.1em;margin-bottom:14px">03</div>
+<p style="font:400 16px/1.62 'Schibsted Grotesk',sans-serif;color:#44403C;margin:0">You lean harder. Your knuckle finds the lid. You decide the back two bars are fine.</p>
+</div>
+<div style="background:#fff;padding:32px 28px">
+<div style="font:800 13px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;letter-spacing:.1em;margin-bottom:14px">04</div>
+<p style="font:400 16px/1.62 'Schibsted Grotesk',sans-serif;color:#44403C;margin:0">Next cook, the burgers taste faintly of the salmon from two weeks ago. The layer gets thicker. So does the excuse.</p>
+</div>
+</div>
+</section>
+
+<section style="background:#12100E;color:#fff">
+<div style="max-width:1240px;margin:0 auto;padding:104px 24px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);max-width:780px">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#FB923C">The thing you already googled</span>
+<h2 style="font:800 clamp(30px,4.3vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.038em;color:#fff;margin:16px 0 24px;text-wrap:balance">"Do wire bristles end up in the food?"</h2>
+<p style="font:400 18px/1.7 'Schibsted Grotesk',sans-serif;color:#C9C4BD;margin:0 0 18px;max-width:60ch;text-wrap:pretty">It happens with wire brushes. Not often, but it happens, and the emergency-room stories are real enough that plenty of people have quit wire brushes entirely. We're not going to pretend ours is magic.</p>
+<p style="font:400 18px/1.7 'Schibsted Grotesk',sans-serif;color:#C9C4BD;margin:0 0 34px;max-width:60ch;text-wrap:pretty">Here is what actually causes it, and what this tool does about it.</p>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px">
+<div style="border:1px solid #2B2724;border-radius:15px;padding:28px;background:#1A1715">
+<h3 style="font:700 17px/1.3 'Schibsted Grotesk',sans-serif;color:#fff;margin:0 0 12px">The cause is a worn head, not wire itself</h3>
+<p style="font:400 15.5px/1.65 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin:0">Bristles shed once the wire has been bent, heated and fatigued over a season or two. People keep using brushes long past that point because the head and the handle are one piece, so retiring the wire means throwing out a tool.</p>
+</div>
+<div style="border:1px solid #2B2724;border-radius:15px;padding:28px;background:#1A1715">
+<h3 style="font:700 17px/1.3 'Schibsted Grotesk',sans-serif;color:#fff;margin:0 0 12px">So the head comes off in five seconds</h3>
+<p style="font:400 15.5px/1.65 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin:0">Hold the unlock button, turn the included wrench, pull. You can hold the head under a light and look at the wire before you cook, which is the only way to actually know it is intact.</p>
+</div>
+<div style="border:1px solid #2B2724;border-radius:15px;padding:28px;background:#1A1715">
+<h3 style="font:700 17px/1.3 'Schibsted Grotesk',sans-serif;color:#fff;margin:0 0 12px">And there's a scraper for the worst of it</h3>
+<p style="font:400 15.5px/1.65 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin:0">The steel plate above the head takes the thick carbon ridges off first, so the wire isn't being mashed into hardened deposits. Less abuse on the wire means less shedding.</p>
+</div>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);margin-top:34px;border-left:2px solid #E8590C;padding:6px 0 6px 22px;max-width:70ch">
+<p style="font:500 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#E7E2DB;margin:0">Our recommendation, printed in the box: wipe the grate with a folded damp paper towel after brushing, every time. Ten seconds. It catches anything loose and it works no matter whose brush you own. If that ritual still makes you uneasy, buy a bristle-free scraper instead of this. We'd rather lose the sale than argue you out of a real concern.</p>
+</div>
+</div>
+</section>
+<section style="max-width:1240px;margin:0 auto;padding:104px 24px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);text-align:center;max-width:700px;margin:0 auto 56px">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">How it works</span>
+<h2 style="font:800 clamp(30px,4.3vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.038em;color:#12100E;margin:16px 0 0;text-wrap:balance">Three steps. No technique to learn.</h2>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:34px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)">
+<div style="width:44px;height:44px;border-radius:50%;background:#12100E;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px/1 'Schibsted Grotesk',sans-serif;margin-bottom:20px">1</div>
+<h3 style="font:700 20px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 10px;letter-spacing:-.02em">Let the grate cool to warm</h3>
+<p style="font:400 16px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Warm, not hot. Fifteen minutes after the burners go off is the sweet spot: grease is soft, metal is safe to touch through a glove.</p>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s .08s cubic-bezier(.22,1,.36,1),transform .8s .08s cubic-bezier(.22,1,.36,1)">
+<div style="width:44px;height:44px;border-radius:50%;background:#12100E;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px/1 'Schibsted Grotesk',sans-serif;margin-bottom:20px">2</div>
+<h3 style="font:700 20px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 10px;letter-spacing:-.02em">Hold the trigger and glide</h3>
+<p style="font:400 16px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Don't press. The motor supplies the force, your job is to steer. Run with the bars, not across them, at about the speed you'd butter toast.</p>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s .16s cubic-bezier(.22,1,.36,1),transform .8s .16s cubic-bezier(.22,1,.36,1)">
+<div style="width:44px;height:44px;border-radius:50%;background:#12100E;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px/1 'Schibsted Grotesk',sans-serif;margin-bottom:20px">3</div>
+<h3 style="font:700 20px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 10px;letter-spacing:-.02em">Wipe once with a damp cloth</h3>
+<p style="font:400 16px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Ten seconds, every time. This is the habit that matters. Then hang the brush by the loop and forget about it until next weekend.</p>
+</div>
+</div>
+</section>
+
+<section style="background:#F7F6F4;border-top:1px solid #EDEAE5;border-bottom:1px solid #EDEAE5">
+<div style="max-width:1240px;margin:0 auto;padding:104px 24px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start" class="two">
+<div class="sticky" style="position:sticky;top:96px">
+<div style="position:relative;border-radius:18px;overflow:hidden;background:#fff;border:1px solid #EDEAE5;height:440px">
+<video ref="{{ proofVideoRef }}" src="uploads/r1-proof.webm" poster="uploads/r1-proof-poster.webp" loop="" muted="" playsinline="" controls="" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video>
+</div>
+</div>
+<div style="padding-top:6px">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">What we kept, what we cut</span>
+<h2 style="font:800 clamp(28px,3.6vw,44px)/1.06 'Schibsted Grotesk',sans-serif;letter-spacing:-.035em;color:#12100E;margin:16px 0 30px;text-wrap:balance">Everything a grill brush is usually bad at.</h2>
+<div style="display:flex;flex-direction:column">
+<div data-reveal="" style="opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:24px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E5E2DD">
+<span style="font:700 15px/1.5 'Schibsted Grotesk',sans-serif;color:#1B7A4B">✓</span>
+<div><strong style="font:700 16.5px/1.5 'Schibsted Grotesk',sans-serif;color:#12100E">Kept: real force.</strong> <span style="font:400 16px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E">A motor applies consistent pressure at a consistent speed. Your arm does not, especially by bar number twelve.</span></div>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:24px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E5E2DD">
+<span style="font:700 15px/1.5 'Schibsted Grotesk',sans-serif;color:#1B7A4B">✓</span>
+<div><strong style="font:700 16.5px/1.5 'Schibsted Grotesk',sans-serif;color:#12100E">Kept: a head that comes off.</strong> <span style="font:400 16px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E">Released with the wrench in the box in about five seconds. The safety story of a wire brush is entirely about whether you can see the wire.</span></div>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:24px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E5E2DD">
+<span style="font:700 15px/1.5 'Schibsted Grotesk',sans-serif;color:#1B7A4B">✓</span>
+<div><strong style="font:700 16.5px/1.5 'Schibsted Grotesk',sans-serif;color:#12100E">Kept: USB-C.</strong> <span style="font:400 16px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E">Same cable as your phone. Two hours on the counter, then roughly a month of weekend cooking.</span></div>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:24px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E5E2DD">
+<span style="font:700 15px/1.5 'Schibsted Grotesk',sans-serif;color:#B42318">✕</span>
+<div><strong style="font:700 16.5px/1.5 'Schibsted Grotesk',sans-serif;color:#12100E">Cut: chemicals.</strong> <span style="font:400 16px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E">No degreaser, no soaking tub, nothing that has to be rinsed off before food touches metal again.</span></div>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:24px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid #E5E2DD">
+<span style="font:700 15px/1.5 'Schibsted Grotesk',sans-serif;color:#B42318">✕</span>
+<div><strong style="font:700 16.5px/1.5 'Schibsted Grotesk',sans-serif;color:#12100E">Cut: the proprietary cable.</strong> <span style="font:400 16px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E">Nothing here depends on a part only we sell, except the heads, and those we commit to stocking.</span></div>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);display:grid;grid-template-columns:24px 1fr;gap:16px;padding:18px 0">
+<span style="font:700 15px/1.5 'Schibsted Grotesk',sans-serif;color:#B42318">✕</span>
+<div><strong style="font:700 16.5px/1.5 'Schibsted Grotesk',sans-serif;color:#12100E">Cut: the hot-grill claim.</strong> <span style="font:400 16px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E">It says DO NOT USE ON HOT GRILL right on the housing, and we mean it. Heat wrecks wire and warps plastic. Warm grate, every time.</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width:1240px;margin:0 auto;padding:104px 24px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);background:#12100E;border-radius:22px;padding:clamp(30px,5vw,58px);color:#fff">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center" class="two">
+<div>
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#FB923C">Do the math on your own grill</span>
+<h2 style="font:800 clamp(26px,3.2vw,40px)/1.08 'Schibsted Grotesk',sans-serif;letter-spacing:-.035em;color:#fff;margin:16px 0 26px;text-wrap:balance">How much of your summer goes into scrubbing?</h2>
+<label style="display:block;font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD;margin-bottom:11px">Minutes cleaning after a cook: <span style="color:#FB923C">{{ mins }}</span></label>
+<input type="range" min="2" max="25" step="1" value="{{ mins }}" sc-camel-on-input="{{ setMins }}" style="width:100%;accent-color:#E8590C;margin-bottom:26px">
+<label style="display:block;font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD;margin-bottom:11px">Cooks per week in season: <span style="color:#FB923C">{{ cooks }}</span></label>
+<input type="range" min="1" max="7" step="1" value="{{ cooks }}" sc-camel-on-input="{{ setCooks }}" style="width:100%;accent-color:#E8590C">
+</div>
+<div style="border:1px solid #2B2724;border-radius:16px;padding:34px;background:#1A1715">
+<div style="font:500 13.5px/1 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin-bottom:10px">Over a 26-week season, that's</div>
+<div style="font:800 clamp(42px,7vw,72px)/1 'Schibsted Grotesk',sans-serif;color:#fff;letter-spacing:-.05em;margin-bottom:6px">{{ hoursStr }}</div>
+<div style="font:500 15px/1.5 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin-bottom:26px">hours of scrubbing, stood over a warm grill.</div>
+<div style="height:1px;background:#2B2724;margin-bottom:26px"></div>
+<div style="font:500 13.5px/1 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin-bottom:10px">Same season at 90 seconds a cook</div>
+<div style="font:800 clamp(30px,4vw,44px)/1 'Schibsted Grotesk',sans-serif;color:#FB923C;letter-spacing:-.04em">{{ newHoursStr }} hours</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="background:#F7F6F4;border-top:1px solid #EDEAE5;border-bottom:1px solid #EDEAE5">
+<div style="max-width:1100px;margin:0 auto;padding:100px 24px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);background:#fff;border:1px solid #E5E2DD;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px -50px rgba(0,0,0,.4)">
+<div style="display:grid;grid-template-columns:.9fr 1.1fr" class="two">
+<div style="background:#FCFBFA;border-right:1px solid #EDEAE5;display:flex;align-items:center;justify-content:center;padding:26px">
+<img src="uploads/r1-hero.webp" alt="CINDER R1 electric grill brush" style="width:100%;display:block">
+</div>
+<div style="padding:clamp(26px,3.5vw,44px)">
+<h2 style="font:800 clamp(24px,2.8vw,34px)/1.1 'Schibsted Grotesk',sans-serif;letter-spacing:-.032em;color:#12100E;margin:0 0 8px">CINDER R1 Electric Grill Brush</h2>
+<p style="font:400 15.5px/1.6 'Schibsted Grotesk',sans-serif;color:#78716C;margin:0 0 24px">Cordless · stainless steel · detachable head</p>
+<button data-mag="" sc-camel-on-click="{{ addToCart }}" style="width:100%;background:#E8590C;color:#fff;border:0;border-radius:12px;padding:19px;font:700 17px/1 'Schibsted Grotesk',sans-serif;cursor:pointer;transition:background .2s ease" style-hover="background:#C2410C">Add to cart — {{ selPriceStr }}</button>
+<p style="font:500 13.5px/1.55 'Schibsted Grotesk',sans-serif;color:#78716C;margin:14px 0 0;text-align:center">{{ gDays }}-day money back · free US shipping · one package</p>
+<div style="height:1px;background:#EDEAE5;margin:26px 0"></div>
+<div style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#A8A29B;margin-bottom:14px">In the box</div>
+<ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:7px">
+<li style="font:400 15px/1.5 'Schibsted Grotesk',sans-serif;color:#57534E">Brush body with built-in steel scraper</li>
+<li style="font:400 15px/1.5 'Schibsted Grotesk',sans-serif;color:#57534E">Rolling stainless wire head, installed</li>
+<li style="font:400 15px/1.5 'Schibsted Grotesk',sans-serif;color:#57534E">Head-changing wrench</li>
+<li style="font:400 15px/1.5 'Schibsted Grotesk',sans-serif;color:#57534E">Work gloves</li>
+<li style="font:400 15px/1.5 'Schibsted Grotesk',sans-serif;color:#57534E">USB-C charging cable</li>
+<li style="font:400 15px/1.5 'Schibsted Grotesk',sans-serif;color:#57534E">Safety and care card</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section style="max-width:1240px;margin:0 auto;padding:104px 24px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center" class="two">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">The advice everyone repeats</span>
+<h2 style="font:800 clamp(28px,3.6vw,44px)/1.06 'Schibsted Grotesk',sans-serif;letter-spacing:-.035em;color:#12100E;margin:16px 0 22px;text-wrap:balance">Half of what the grilling blogs tell you doesn't survive contact with a real grate.</h2>
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font:400 16.5px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0"><strong style="color:#12100E">"Burn it off on high for 15 minutes."</strong> That carbonises the grease into a harder deposit and burns through gas. It makes the grate look cleaner and be dirtier.</p>
+<p style="font:400 16.5px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0"><strong style="color:#12100E">"Use half an onion."</strong> Fine for a light seasoning film. Useless against three weekends of chicken skin.</p>
+<p style="font:400 16.5px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0"><strong style="color:#12100E">"Ball up some foil."</strong> Better than nothing, and a good way to burn your fingertips through tongs.</p>
+<p style="font:400 16.5px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0"><strong style="color:#12100E">"Soak the grates overnight."</strong> Now you have two cast-iron grates in the bathtub and a conversation with your spouse.</p>
+</div>
+<p style="font:500 17px/1.65 'Schibsted Grotesk',sans-serif;color:#12100E;margin:26px 0 0;border-left:2px solid #E8590C;padding-left:20px">All of it works around the same missing thing: sustained mechanical force. That's the only part we set out to solve.</p>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s .1s cubic-bezier(.22,1,.36,1),transform .8s .1s cubic-bezier(.22,1,.36,1);border-radius:18px;overflow:hidden;border:1px solid #EDEAE5;height:520px">
+<img src="uploads/r1-detail.webp" alt="Detail of the stainless bristle head" style="width:100%;height:100%;object-fit:cover;object-position:50% 55%;display:block">
+</div>
+</div>
+</section>
+
+<section style="background:#FCFBFA;border-top:1px solid #EDEAE5;border-bottom:1px solid #EDEAE5">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);max-width:900px;margin:0 auto;padding:96px 24px">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">Price</span>
+<h2 style="font:800 clamp(28px,3.8vw,46px)/1.06 'Schibsted Grotesk',sans-serif;letter-spacing:-.035em;color:#12100E;margin:16px 0 24px;text-wrap:balance">"Why is it sixty-seven dollars when a brush is nine?"</h2>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 16px;max-width:62ch;text-wrap:pretty">Because most of the cost is a motor, a lithium cell and a locking head mechanism, and none of those exist in a nine-dollar brush. That's the whole answer.</p>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 16px;max-width:62ch;text-wrap:pretty">The comparison people actually make is against the brush they buy every spring, throw out every fall and complain about all summer. Seven of those is roughly this. The difference is that this one has a motor doing the pushing and a head you can take off and inspect.</p>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0;max-width:62ch;text-wrap:pretty">We sell one product at one price. There's no cheap version to upsell you off, no premium version we're steering you toward and no accessory list at checkout. What's in the box is the whole offer.</p>
+</div>
+</section>
+
+<section style="max-width:1240px;margin:0 auto;padding:100px 24px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);max-width:700px;margin-bottom:22px">
+<span id="reviews" style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">Customers</span>
+<h2 style="font:800 clamp(30px,4.3vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.038em;color:#12100E;margin:16px 0 0;text-wrap:balance">What people actually said.</h2>
+</div>
+<div data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);border:1px solid #E5E2DD;border-radius:16px;background:#FCFBFA;padding:28px 32px;margin-bottom:28px;display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center" class="two">
+<div style="text-align:center;min-width:150px">
+<div style="font:800 58px/1 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E">{{ ratingStr }}</div>
+<div style="font:700 17px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;letter-spacing:.04em;margin:10px 0 8px">{{ ratingStars }}</div>
+<div style="font:500 13px/1.4 'Schibsted Grotesk',sans-serif;color:#78716C">{{ ratingCountStr }}</div>
+<div style="font:600 13px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E;margin-top:4px">{{ soldStr }}</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ ratingBars }}" as="b" hint-placeholder-count="5">
+<div style="display:grid;grid-template-columns:34px 1fr 54px;gap:14px;align-items:center">
+<span style="font:600 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E">{{ b.label }}</span>
+<span style="display:block;height:8px;border-radius:4px;background:#EDEAE5;overflow:hidden">
+<span style="display:block;height:100%;border-radius:4px;background:#E8590C;width:{{ b.pct }}"></span>
+</span>
+<span style="font:500 12.5px/1 'Schibsted Grotesk',sans-serif;color:#A8A29B;text-align:right">{{ b.count }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+<sc-for list="{{ reviews }}" as="r" hint-placeholder-count="6">
+<div data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);border:1px solid #EDEAE5;border-radius:15px;padding:26px;background:#fff">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px">
+<span style="font:700 13px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;letter-spacing:.04em">{{ r.starStr }}</span>
+<span style="font:600 10px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#1B7A4B;background:#EAF6EF;border-radius:4px;padding:5px 7px">{{ r.badge }}</span>
+</div>
+<h3 style="font:700 17px/1.32 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 11px;letter-spacing:-.015em">{{ r.head }}</h3>
+<p style="font:400 15.5px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 18px">{{ r.body }}</p>
+<div style="border-top:1px solid #F2EFEB;padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+<span style="font:600 13.5px/1.3 'Schibsted Grotesk',sans-serif;color:#12100E">{{ r.who }}</span>
+<span style="font:400 12.5px/1.3 'Schibsted Grotesk',sans-serif;color:#A8A29B">{{ r.meta }}</span>
+</div>
+<div style="font:500 12.5px/1.3 'Schibsted Grotesk',sans-serif;color:#78716C;margin-top:7px">Bought: {{ r.variant }}</div>
+</div>
+</sc-for>
+</div>
+<div style="border:1px solid #E5E2DD;background:#FCFBFA;border-radius:14px;padding:24px 28px;max-width:900px;margin-top:30px">
+<h3 style="font:700 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 10px;letter-spacing:-.01em">Straight talk about results</h3>
+<p style="font:400 15.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Results vary with grill type, how baked-on the residue is and how long it's been since the last clean. A grate that hasn't been touched in four years takes more than one pass, and some carbon is permanent. Customer stories describe those individuals' experience and are not a promise of yours.</p>
+</div>
+</section>
+
+<section style="max-width:1240px;margin:0 auto;padding:0 24px 100px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);border:1.5px solid #12100E;border-radius:22px;padding:clamp(30px,5vw,56px);display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center" class="two">
+<div style="width:104px;height:104px;border-radius:50%;background:#12100E;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none">
+<span style="font:800 30px/1 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em">{{ gDays }}</span>
+<span style="font:600 10px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.12em;margin-top:5px">DAYS</span>
+</div>
+<div>
+<h2 style="font:800 clamp(24px,2.9vw,36px)/1.1 'Schibsted Grotesk',sans-serif;letter-spacing:-.032em;color:#12100E;margin:0 0 14px">Clean your grill with it. If it doesn't beat your old brush, send it back.</h2>
+<p style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0;max-width:66ch">Use it as many times as you want for {{ gDays }} days. If it doesn't do what this page says, email us and we refund the full amount including any shipping you paid. Used, greasy, box long gone: doesn't matter. We don't ask you to ship a dirty grill brush back across the world, so for most returns we simply refund you.</p>
+</div>
+</div>
+</section>
+
+<section style="max-width:900px;margin:0 auto;padding:0 24px 100px">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);margin-bottom:30px">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">Questions</span>
+<h2 style="font:800 clamp(30px,4.3vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.038em;color:#12100E;margin:16px 0 0">The ones people actually ask.</h2>
+</div>
+<div style="border-top:1px solid #E5E2DD">
+<sc-for list="{{ faqs }}" as="f" hint-placeholder-count="10">
+<div style="border-bottom:1px solid #E5E2DD">
+<button sc-camel-on-click="{{ f.toggle }}" style="width:100%;display:flex;align-items:center;gap:20px;background:none;border:0;padding:24px 4px;cursor:pointer;text-align:left">
+<span style="flex:1;font:600 17.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E;letter-spacing:-.015em">{{ f.q }}</span>
+<span style="font:400 22px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;flex:none;transition:transform .3s ease;transform:rotate({{ f.rot }}deg);display:inline-block">+</span>
+</button>
+<div style="overflow:hidden;max-height:{{ f.mh }};transition:max-height .42s cubic-bezier(.22,1,.36,1)">
+<p style="font:400 16.5px/1.72 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 26px;max-width:66ch;padding-right:20px">{{ f.a }}</p>
+</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="background:#12100E;color:#fff">
+<div data-reveal="" style="opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);max-width:820px;margin:0 auto;padding:110px 24px;text-align:center">
+<h2 style="font:800 clamp(32px,4.6vw,56px)/1.04 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#fff;margin:0 0 22px;text-wrap:balance">The grate is going to need cleaning either way.</h2>
+<p style="font:400 18.5px/1.68 'Schibsted Grotesk',sans-serif;color:#C9C4BD;margin:0 auto 38px;max-width:52ch;text-wrap:pretty">The only question is whether it costs you ten minutes and a sore shoulder or ninety seconds and a wipe with a cloth. Try it for {{ gDays }} days on our money.</p>
+<button data-mag="" sc-camel-on-click="{{ addToCart }}" style="background:#E8590C;color:#fff;border:0;border-radius:12px;padding:21px 44px;font:700 18px/1 'Schibsted Grotesk',sans-serif;cursor:pointer;animation:pulseRing 2.6s ease-out infinite;transition:background .2s ease" style-hover="background:#C2410C">Add to cart — {{ selPriceStr }}</button>
+<p style="font:500 14px/1.6 'Schibsted Grotesk',sans-serif;color:#8A847C;margin:22px 0 0">{{ selName }} · free US shipping · {{ gDays }}-day money back</p>
+</div>
+</section>
+</main>
+</sc-if>
+<sc-if value="{{ isProduct }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:1240px;margin:0 auto;padding:52px 24px 100px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start" class="two">
+<div class="sticky" style="position:sticky;top:96px">
+<div style="border:1px solid #EDEAE5;border-radius:18px;overflow:hidden;background:#FCFBFA;aspect-ratio:1">
+<img src="{{ mainImg }}" data-scrub="" alt="CINDER R1 electric grill brush" style="width:100%;height:100%;object-fit:cover;display:block;will-change:transform;transition:transform .12s linear">
+</div>
+<div style="display:flex;gap:12px;margin-top:14px">
+<sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="4">
+<button sc-camel-on-click="{{ t.pick }}" style="flex:1;border:1.5px solid {{ t.bc }};border-radius:11px;overflow:hidden;padding:0;background:#FCFBFA;cursor:pointer;aspect-ratio:1">
+<img src="{{ t.src }}" alt="Product view" style="width:100%;height:100%;object-fit:cover;display:block">
+</button>
+</sc-for>
+</div>
+</div>
+<div>
+<div style="font:600 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#E8590C;margin-bottom:14px">CINDER</div>
+<h1 style="font:800 clamp(26px,3.4vw,42px)/1.08 'Schibsted Grotesk',sans-serif;letter-spacing:-.035em;color:#12100E;margin:0 0 10px;text-wrap:balance">CINDER R1 Electric Grill Brush</h1>
+<p style="font:400 16.5px/1.6 'Schibsted Grotesk',sans-serif;color:#78716C;margin:0;max-width:46ch">Cordless rolling stainless head, built-in scraper, USB-C. One package, nothing else to buy.</p>
+<div style="font:800 32px/1 'Schibsted Grotesk',sans-serif;color:#12100E;letter-spacing:-.035em;margin:22px 0 14px">{{ selPriceStr }}</div>
+<div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:26px">
+<span style="display:inline-flex;align-items:center;gap:7px">
+<span style="font:700 14px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;letter-spacing:.04em">{{ ratingStars }}</span>
+<span style="font:700 14px/1 'Schibsted Grotesk',sans-serif;color:#12100E">{{ ratingStr }}</span>
+</span>
+<a href="#reviews" sc-camel-on-click="{{ goReviews }}" style="font:500 13.5px/1 'Schibsted Grotesk',sans-serif;color:#78716C;text-decoration:underline">{{ ratingCountStr }}</a>
+<span style="width:1px;height:13px;background:#E5E2DD"></span>
+<span style="font:600 13.5px/1 'Schibsted Grotesk',sans-serif;color:#12100E">{{ soldStr }}</span>
+</div>
+<div style="display:flex;gap:12px;margin-bottom:12px">
+<div style="display:flex;align-items:center;border:1.5px solid #E5E2DD;border-radius:12px">
+<button sc-camel-on-click="{{ dec }}" style="width:46px;height:56px;background:none;border:0;font:500 20px/1 'Schibsted Grotesk',sans-serif;color:#57534E;cursor:pointer">−</button>
+<span style="width:34px;text-align:center;font:700 16px/1 'Schibsted Grotesk',sans-serif;color:#12100E">{{ qty }}</span>
+<button sc-camel-on-click="{{ inc }}" style="width:46px;height:56px;background:none;border:0;font:500 20px/1 'Schibsted Grotesk',sans-serif;color:#57534E;cursor:pointer">+</button>
+</div>
+<button data-mag="" sc-camel-on-click="{{ addToCart }}" style="flex:1;background:#E8590C;color:#fff;border:0;border-radius:12px;padding:19px;font:700 16.5px/1 'Schibsted Grotesk',sans-serif;cursor:pointer;transition:background .2s ease" style-hover="background:#C2410C">Add to cart</button>
+</div>
+<button data-mag="" sc-camel-on-click="{{ buyNow }}" style="width:100%;background:#12100E;color:#fff;border:0;border-radius:12px;padding:19px;font:700 16.5px/1 'Schibsted Grotesk',sans-serif;cursor:pointer;margin-bottom:24px">Buy it now</button>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:30px">
+<div style="background:#F7F6F4;border-radius:9px;padding:13px 15px;font:500 13.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">{{ gDays }}-day money back</div>
+<div style="background:#F7F6F4;border-radius:9px;padding:13px 15px;font:500 13.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">Free US shipping</div>
+<div style="background:#F7F6F4;border-radius:9px;padding:13px 15px;font:500 13.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">Tracked, typically 10–14 days</div>
+<div style="background:#F7F6F4;border-radius:9px;padding:13px 15px;font:500 13.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">Duties paid at checkout</div>
+</div>
+<div style="border:1.5px solid #B42318;border-radius:12px;padding:18px 20px;background:#FEF6F5;margin-bottom:30px">
+<strong style="font:700 15px/1.4 'Schibsted Grotesk',sans-serif;color:#B42318;display:block;margin-bottom:7px">Never use on a hot grill</strong>
+<span style="font:400 15px/1.6 'Schibsted Grotesk',sans-serif;color:#7A2018">Wait until the grate is warm, not hot. Read <a href="#safety" sc-camel-on-click="{{ goSafety }}" style="color:#B42318;text-decoration:underline">safety and care</a> before the first use.</span>
+</div>
+<div style="border-top:1px solid #E5E2DD;padding-top:26px">
+<h2 style="font:700 13px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#A8A29B;margin:0 0 16px">Specifications</h2>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ specs }}" as="s" hint-placeholder-count="10">
+<div style="display:flex;justify-content:space-between;gap:20px;padding:11px 0;border-bottom:1px solid #F2EFEB">
+<span style="font:500 14.5px/1.4 'Schibsted Grotesk',sans-serif;color:#78716C">{{ s.k }}</span>
+<span style="font:600 14.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E;text-align:right">{{ s.v }}</span>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ showPH }}" hint-placeholder-val="{{ true }}">
+<p style="font:500 13px/1.55 'Schibsted Grotesk',sans-serif;color:#9A3412;background:#FEF3E7;border:1px dashed #E8590C;border-radius:9px;padding:12px 14px;margin:16px 0 0">Confirm every figure above against your supplier's spec sheet before publishing.</p>
+</sc-if>
+</div>
+</div>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isFaq }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:860px;margin:0 auto;padding:64px 24px 110px">
+<h1 style="font:800 clamp(32px,4.4vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:0 0 16px">Frequently asked questions</h1>
+<p style="font:400 17.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 40px;max-width:58ch">If your question isn't here, email hello@cindergrill.com. A person answers, usually within a day.</p>
+<div style="border-top:1px solid #E5E2DD">
+<sc-for list="{{ faqs }}" as="f" hint-placeholder-count="10">
+<div style="border-bottom:1px solid #E5E2DD">
+<button sc-camel-on-click="{{ f.toggle }}" style="width:100%;display:flex;align-items:center;gap:20px;background:none;border:0;padding:24px 4px;cursor:pointer;text-align:left">
+<span style="flex:1;font:600 17.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E;letter-spacing:-.015em">{{ f.q }}</span>
+<span style="font:400 22px/1 'Schibsted Grotesk',sans-serif;color:#E8590C;flex:none;transition:transform .3s ease;transform:rotate({{ f.rot }}deg);display:inline-block">+</span>
+</button>
+<div style="overflow:hidden;max-height:{{ f.mh }};transition:max-height .42s cubic-bezier(.22,1,.36,1)">
+<p style="font:400 16.5px/1.72 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 26px;max-width:66ch;padding-right:20px">{{ f.a }}</p>
+</div>
+</div>
+</sc-for>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isSafety }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:860px;margin:0 auto;padding:64px 24px 110px">
+<span style="font:700 12px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#E8590C">Read this one</span>
+<h1 style="font:800 clamp(32px,4.4vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:16px 0 18px">Safety and care</h1>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 40px;max-width:60ch">This page exists because a wire brush is only as safe as the habits around it. Five minutes here is worth more than any feature on the product page.</p>
+<div style="border:1.5px solid #B42318;border-radius:14px;padding:26px 28px;margin-bottom:40px;background:#FEF6F5">
+<h2 style="font:700 19px/1.3 'Schibsted Grotesk',sans-serif;color:#B42318;margin:0 0 12px">Never use it on a hot grill</h2>
+<p style="font:400 16px/1.68 'Schibsted Grotesk',sans-serif;color:#7A2018;margin:0">It's printed on the housing. Heat softens the wire so it bends instead of scraping, and it can deform the plastic head mount. Let the grate cool until it's warm to a gloved hand, about fifteen minutes after the burners go off.</p>
+</div>
+<h2 style="font:700 22px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 14px;letter-spacing:-.02em">Before every use: the ten-second check</h2>
+<ol style="margin:0 0 40px;padding-left:20px;display:flex;flex-direction:column;gap:11px">
+<li style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E">Look at the head under decent light. If wire is splayed flat, missing in patches, or you can pull a strand out with your fingers, change the head. Don't finish the season on it.</li>
+<li style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E">Tug two or three bristle clusters. They should not move.</li>
+<li style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E">Check the head is fully seated and the lock has clicked. A head that wobbles will shed.</li>
+</ol>
+<h2 style="font:700 22px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 14px;letter-spacing:-.02em">After every use: the wipe</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 40px;max-width:62ch">Fold a damp paper towel, hold it with tongs and run it down every bar. This is the single most effective thing you can do to keep loose wire out of food, and it applies to every wire brush ever made, not just ours.</p>
+<h2 style="font:700 22px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 14px;letter-spacing:-.02em">When the wire is worn</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 14px;max-width:62ch">Stop using it at the first sign of splaying or shedding, not at the end of the season. A worn wire brush is the one that puts bristles in food, and no cleaning routine makes up for that.</p>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 40px;max-width:62ch">We sell the brush as a single package and don't stock heads as a separate item. If yours wears out or arrives damaged inside the guarantee window, email us and we'll sort it out rather than sending you looking for a part number.</p>
+<h2 style="font:700 22px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 14px;letter-spacing:-.02em">Grate compatibility</h2>
+<div style="border:1px solid #E5E2DD;border-radius:13px;overflow:hidden;margin-bottom:40px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E5E2DD" class="two">
+<div style="background:#fff;padding:18px 20px"><strong style="font:700 15px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Stainless steel bars</strong><p style="font:400 14.5px/1.55 'Schibsted Grotesk',sans-serif;color:#57534E;margin:6px 0 0">Ideal. Full pressure, no concerns.</p></div>
+<div style="background:#fff;padding:18px 20px"><strong style="font:700 15px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Bare cast iron</strong><p style="font:400 14.5px/1.55 'Schibsted Grotesk',sans-serif;color:#57534E;margin:6px 0 0">Ideal. Re-oil after cleaning as you normally would.</p></div>
+<div style="background:#fff;padding:18px 20px"><strong style="font:700 15px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Porcelain-coated</strong><p style="font:400 14.5px/1.55 'Schibsted Grotesk',sans-serif;color:#57534E;margin:6px 0 0">Test a back corner first, use light pressure and keep moving. Stainless wire can mark a chipped coating.</p></div>
+<div style="background:#fff;padding:18px 20px"><strong style="font:700 15px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Ceramic or enamel</strong><p style="font:400 14.5px/1.55 'Schibsted Grotesk',sans-serif;color:#57534E;margin:6px 0 0">Not recommended. Use the scraper edge or a nylon tool instead.</p></div>
+</div>
+</div>
+<h2 style="font:700 22px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 14px;letter-spacing:-.02em">Charging, water and storage</h2>
+<ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:11px">
+<li style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E">Charge indoors on a hard surface with the supplied USB-C cable or any standard 5V phone charger.</li>
+<li style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E">The body is splash resistant, not waterproof. Rinse the head under the tap with the head detached. Never submerge the body and never put any part of it in a dishwasher.</li>
+<li style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E">Store it dry and indoors. Left out in the rain all season, the wire will rust, same as any steel brush.</li>
+<li style="font:400 16.5px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E">Keep it away from children. It's a power tool with metal wire on the end.</li>
+</ul>
+</main>
+</sc-if>
+<sc-if value="{{ isShipping }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:820px;margin:0 auto;padding:64px 24px 110px">
+<h1 style="font:800 clamp(32px,4.4vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:0 0 18px">Shipping</h1>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 22px;max-width:58ch">The brush is built, packed and dispatched by our manufacturing partner in Guangdong, China, and flown direct to you. That is why one tool with a motor and a lithium cell costs $67 instead of $110.</p>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 40px;max-width:58ch">It also means this is not a two-day delivery, and we would rather you knew that here than at the bottom of a confirmation email. Most US orders land inside two weeks.</p>
+<div style="border:1px solid #E5E2DD;border-radius:14px;overflow:hidden;margin-bottom:40px">
+<div style="display:grid;grid-template-columns:1.2fr 1fr .7fr;gap:1px;background:#E5E2DD">
+<div style="background:#F7F6F4;padding:14px 18px;font:700 11.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#78716C">Destination</div>
+<div style="background:#F7F6F4;padding:14px 18px;font:700 11.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#78716C">Time</div>
+<div style="background:#F7F6F4;padding:14px 18px;font:700 11.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#78716C">Cost</div>
+<div style="background:#fff;padding:17px 18px;font:500 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Continental US, standard</div>
+<div style="background:#fff;padding:17px 18px;font:400 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">8–16 business days</div>
+<div style="background:#fff;padding:17px 18px;font:600 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#1B7A4B">Free</div>
+<div style="background:#fff;padding:17px 18px;font:500 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Continental US, express</div>
+<div style="background:#fff;padding:17px 18px;font:400 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">5–9 business days</div>
+<div style="background:#fff;padding:17px 18px;font:600 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">$19.00</div>
+<div style="background:#fff;padding:17px 18px;font:500 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Alaska, Hawaii, PR</div>
+<div style="background:#fff;padding:17px 18px;font:400 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">12–20 business days</div>
+<div style="background:#fff;padding:17px 18px;font:600 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#1B7A4B">Free</div>
+<div style="background:#fff;padding:17px 18px;font:500 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">Canada</div>
+<div style="background:#fff;padding:17px 18px;font:400 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">12–20 business days</div>
+<div style="background:#fff;padding:17px 18px;font:600 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">$14.00</div>
+<div style="background:#fff;padding:17px 18px;font:500 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">UK and EU</div>
+<div style="background:#fff;padding:17px 18px;font:400 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#57534E">10–18 business days</div>
+<div style="background:#fff;padding:17px 18px;font:600 15.5px/1.4 'Schibsted Grotesk',sans-serif;color:#12100E">$14.00</div>
+</div>
+</div>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Processing</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 32px;max-width:62ch">One to two business days to pick, pack and hand the parcel to the carrier. Orders placed Friday afternoon go out Monday. The delivery windows above start once it is scanned in, not when you click buy.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Tracking, and the quiet week</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 14px;max-width:62ch">A tracking number reaches you by email at the first real carrier scan, usually three to five days after you order. It then goes quiet for several days while the parcel is consolidated and flown. That silence is normal on this route and is not a lost package.</p>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 32px;max-width:62ch">Tracking wakes up again when it clears US customs and hands off to USPS or UPS for the last mile.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Import duty is already paid</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 14px;max-width:62ch">The United States removed the $800 de minimis exemption on 29 August 2025. Every parcel entering the country is now dutiable, whatever it cost, and plenty of stores let the courier bill the customer on the doorstep for it.</p>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 32px;max-width:62ch">We ship delivered-duty-paid. Duty and any import handling fee are settled by us before the parcel moves, and they are inside the $67. The number at checkout is the last number you pay.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Lithium battery restrictions</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 32px;max-width:62ch">The cell is installed in the tool and ships as UN3481, on air freight with a certified handler and by road for the last mile. We can't ship to PO boxes, APO or FPO addresses. If checkout rejects your address, that is why — send us a street address and we'll sort it.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Chinese New Year</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 32px;max-width:62ch">The factory and the freight network shut for roughly two weeks around the lunar new year, usually late January into February. Orders placed in that window are dispatched when it reopens, and we put a banner on this site before it happens rather than after.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Late, lost or crushed</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0;max-width:62ch">If it passes 30 business days with no delivery scan, email hello@cindergrill.com with your order number: we send a replacement or refund you, your choice, and we take it up with the carrier ourselves. Same if it arrives damaged — a photo is enough, and nothing needs to go back.</p>
+</main>
+</sc-if>
+
+<sc-if value="{{ isReturns }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:820px;margin:0 auto;padding:64px 24px 110px">
+<h1 style="font:800 clamp(30px,4.2vw,50px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:0 0 18px">Returns and the {{ gDays }}-day guarantee</h1>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 40px;max-width:58ch">Use it on a real grill. That's the only way to know. If it doesn't beat the brush you already own, we refund you.</p>
+<div style="display:flex;flex-direction:column;gap:12px;margin-bottom:44px">
+<div style="border:1px solid #E5E2DD;border-radius:13px;padding:24px 26px">
+<h2 style="font:700 18px/1.3 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 9px">Cancel free within 12 hours</h2>
+<p style="font:400 16px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Orders go to the factory in a batch twice a day. Email inside twelve hours and we cancel and refund in full before anything is packed. After that it is in the post, so it falls under the guarantee instead — which is the same outcome with a longer wait.</p>
+</div>
+<div style="border:1px solid #E5E2DD;border-radius:13px;padding:24px 26px">
+<h2 style="font:700 18px/1.3 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 9px">Used is fine</h2>
+<p style="font:400 16px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Greasy, scratched, box long gone. A guarantee that requires unused condition on a cleaning tool isn't a guarantee.</p>
+</div>
+<div style="border:1px solid #E5E2DD;border-radius:13px;padding:24px 26px">
+<h2 style="font:700 18px/1.3 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 9px">You usually keep it</h2>
+<p style="font:400 16px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">For most refunds we don't ask for the product back. The brush ships from Guangdong and posting a used one back there costs more than the brush, so we refund you and you keep it or pass it on. If you'd rather return it anyway, we'll send you a US address and cover the postage when the fault is ours.</p>
+</div>
+<div style="border:1px solid #E5E2DD;border-radius:13px;padding:24px 26px">
+<h2 style="font:700 18px/1.3 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 9px">Shipping and duty come back too</h2>
+<p style="font:400 16px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">If you paid for express or international shipping, that is refunded with the product price. Import duty is inside the $67 and it comes back with it. No restocking fee, no deduction.</p>
+</div>
+<div style="border:1px solid #E5E2DD;border-radius:13px;padding:24px 26px">
+<h2 style="font:700 18px/1.3 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 9px">Twelve-month warranty on the motor and cell</h2>
+<p style="font:400 16px/1.68 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Separate from the guarantee. If the motor stops or the battery won't hold a charge within twelve months of delivery, we ship a replacement brush on the same timeline as a new order and nothing needs to come back. Wire wear is normal use and excluded, as is damage from using it on a hot grill.</p>
+</div>
+</div>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">How to start one</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 32px;max-width:62ch">Email hello@cindergrill.com with your order number and one line about what went wrong. There's no form, no ticket number and no chatbot. Refunds are issued to the original payment method and usually land in 3 to 5 business days.</p>
+<p style="font:400 15px/1.68 'Schibsted Grotesk',sans-serif;color:#78716C;margin:0;max-width:62ch">The clock starts the day it arrives, not the day you ordered, so the two weeks in transit are not eaten out of your {{ gDays }} days.</p>
+</main>
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:820px;margin:0 auto;padding:64px 24px 110px">
+<h1 style="font:800 clamp(32px,4.4vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:0 0 20px">About Cinder</h1>
+<p style="font:400 18px/1.72 'Schibsted Grotesk',sans-serif;color:#44403C;margin:0 0 20px;max-width:60ch;text-wrap:pretty">We sell one tool. That's not a positioning exercise, it's the whole company: a cordless brush that takes carbon off a grill grate, sold as one package with everything it needs already in the box.</p>
+<p style="font:400 17px/1.72 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 20px;max-width:60ch;text-wrap:pretty">The product category we came from is a mess. Grill brushes are sold as a nine-dollar impulse buy, designed to last one season and quietly become a safety problem in year two. The bristle-in-the-food stories that scare people are almost always about a brush somebody should have thrown out months earlier, and had no reason to.</p>
+<p style="font:400 17px/1.72 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 20px;max-width:60ch;text-wrap:pretty">So we made the head come off, put the wrench that releases it in the box, and wrote the retirement rule on the care card instead of burying it on a support page. If you can take the wire out and look at it, you can decide for yourself whether it is still safe to use. A brush with the bristles moulded in permanently gives you no way to make that call.</p>
+<p style="font:400 17px/1.72 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 40px;max-width:60ch;text-wrap:pretty">We don't own a factory. The brush is built and shipped by a manufacturing partner in Guangdong, which is why it takes a week or two to reach you and why it costs $67 rather than $110. That is on the shipping page in full, along with what happens to import duty, because finding it out after you've paid is how stores in this category earn their reputation. We answer our own email and don't run a wholesale channel. If something we've written here turns out to be wrong, tell us and we'll change it.</p>
+<div style="border-left:2px solid #E8590C;padding:6px 0 6px 22px;max-width:62ch">
+<p style="font:500 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0">What we will not do: claim it works on a hot grill, imply wire brushes carry no risk, or pretend a motor will remove four years of carbon in one pass. Those three lies are how this category earned its reputation.</p>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:760px;margin:0 auto;padding:64px 24px 110px">
+<h1 style="font:800 clamp(32px,4.4vw,52px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:0 0 18px">Contact</h1>
+<p style="font:400 17.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 36px;max-width:56ch">hello@cindergrill.com, Monday to Friday, 9am to 5pm Eastern. Most emails get answered the same day and always by a person.</p>
+<div style="border:1px solid #E5E2DD;border-radius:16px;padding:clamp(24px,4vw,36px);background:#FCFBFA">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px" class="two">
+<label style="display:block">
+<span style="display:block;font:600 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;margin-bottom:8px">Your name</span>
+<input type="text" value="{{ fName }}" sc-camel-on-input="{{ setName }}" style="width:100%;border:1.5px solid #E5E2DD;border-radius:10px;padding:14px 15px;font:400 15.5px/1 'Schibsted Grotesk',sans-serif;color:#12100E;background:#fff">
+</label>
+<label style="display:block">
+<span style="display:block;font:600 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;margin-bottom:8px">Email</span>
+<input type="email" value="{{ fEmail }}" sc-camel-on-input="{{ setEmail }}" style="width:100%;border:1.5px solid #E5E2DD;border-radius:10px;padding:14px 15px;font:400 15.5px/1 'Schibsted Grotesk',sans-serif;color:#12100E;background:#fff">
+</label>
+</div>
+<label style="display:block;margin-bottom:16px">
+<span style="display:block;font:600 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;margin-bottom:8px">Order number, if you have one</span>
+<input type="text" value="{{ fOrder }}" sc-camel-on-input="{{ setOrder }}" style="width:100%;border:1.5px solid #E5E2DD;border-radius:10px;padding:14px 15px;font:400 15.5px/1 'Schibsted Grotesk',sans-serif;color:#12100E;background:#fff">
+</label>
+<label style="display:block;margin-bottom:20px">
+<span style="display:block;font:600 13px/1 'Schibsted Grotesk',sans-serif;color:#57534E;margin-bottom:8px">What can we help with?</span>
+<textarea rows="5" value="{{ fMsg }}" sc-camel-on-input="{{ setMsg }}" style="width:100%;border:1.5px solid #E5E2DD;border-radius:10px;padding:14px 15px;font:400 15.5px/1.5 'Schibsted Grotesk',sans-serif;color:#12100E;background:#fff;resize:vertical"></textarea>
+</label>
+<button sc-camel-on-click="{{ submitContact }}" style="background:#E8590C;color:#fff;border:0;border-radius:11px;padding:17px 30px;font:700 16px/1 'Schibsted Grotesk',sans-serif;cursor:pointer">{{ contactBtn }}</button>
+<sc-if value="{{ contactMsg }}" hint-placeholder-val="{{ false }}">
+<p style="font:500 14.5px/1.6 'Schibsted Grotesk',sans-serif;color:#1B7A4B;margin:16px 0 0">{{ contactMsg }}</p>
+</sc-if>
+<p style="font:500 12.5px/1.55 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin:14px 0 0">Demo form. Connect it to your Shopify contact form or help desk on launch.</p>
+</div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isTrack }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:640px;margin:0 auto;padding:64px 24px 140px">
+<h1 style="font:800 clamp(30px,4.2vw,48px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:0 0 16px">Track your order</h1>
+<p style="font:400 17px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 32px;max-width:52ch">Enter the order number from your confirmation email. It starts with CG.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+<input type="text" value="{{ fOrder }}" sc-camel-on-input="{{ setOrder }}" style="flex:1;min-width:200px;border:1.5px solid #E5E2DD;border-radius:11px;padding:16px;font:400 16px/1 'Schibsted Grotesk',sans-serif;color:#12100E">
+<button sc-camel-on-click="{{ trackLookup }}" style="background:#12100E;color:#fff;border:0;border-radius:11px;padding:16px 26px;font:700 15.5px/1 'Schibsted Grotesk',sans-serif;cursor:pointer">Look up</button>
+</div>
+<sc-if value="{{ trackMsg }}" hint-placeholder-val="{{ false }}">
+<div style="border:1px solid #E5E2DD;background:#FCFBFA;border-radius:12px;padding:18px 20px">
+<p style="font:500 15.5px/1.65 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">{{ trackMsg }}</p>
+</div>
+</sc-if>
+<p style="font:500 12.5px/1.55 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin:18px 0 0">Demo lookup. Point this at your Shopify order status URL or tracking app on launch.</p>
+</main>
+</sc-if>
+
+<sc-if value="{{ isLegal }}" hint-placeholder-val="{{ false }}">
+<main style="max-width:820px;margin:0 auto;padding:64px 24px 110px">
+<h1 style="font:800 clamp(30px,4.2vw,48px)/1.05 'Schibsted Grotesk',sans-serif;letter-spacing:-.04em;color:#12100E;margin:0 0 18px">Privacy and terms</h1>
+<sc-if value="{{ showPH }}" hint-placeholder-val="{{ true }}">
+<div style="background:#FEF3E7;border:1px dashed #E8590C;border-radius:11px;padding:15px 19px;margin-bottom:34px">
+<p style="font:600 14px/1.55 'Schibsted Grotesk',sans-serif;color:#9A3412;margin:0">PLACEHOLDER LEGAL TEXT. Have a lawyer produce the real privacy policy and terms of service for your jurisdiction before launch. Shopify's generated templates are a starting point, not a substitute.</p>
+</div>
+</sc-if>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">What we collect</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 28px;max-width:62ch">Your name, email, shipping address and order history, so we can send you a brush and answer your email about it. Payment details are handled by Shopify's payment processor and never reach our servers.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">What we don't do</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 28px;max-width:62ch">We don't sell your data, rent your email address or add you to a marketing list you didn't ask for. If you email us and then ask to be forgotten, we delete what we can and tell you what we're legally required to keep.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Product safety terms</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0 0 28px;max-width:62ch">This product is a wire brush containing a lithium-ion battery. It is not to be used on a hot grill, submerged, disassembled or given to children. Using it outside the instructions on the safety and care page voids the warranty and may be dangerous. Replace the head at the first sign of wear and wipe the grate before cooking.</p>
+<h2 style="font:700 21px/1.25 'Schibsted Grotesk',sans-serif;color:#12100E;margin:0 0 12px;letter-spacing:-.02em">Claims on this site</h2>
+<p style="font:400 16.5px/1.7 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0;max-width:62ch">The 90-second figure describes a typical two-burner to four-burner grate cleaned regularly. Results vary with grill type, residue and interval since the last clean. Customer statements describe individual experiences and are not a guarantee of your result.</p>
+</main>
+</sc-if>
+<!--PAGES-->
+<footer style="background:#0B0A09;color:#fff;padding:70px 24px 34px">
+<div style="max-width:1240px;margin:0 auto">
+<div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px" class="two">
+<div>
+<div style="font:900 19px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.16em;margin-bottom:14px">CINDER</div>
+<p style="font:400 15px/1.65 'Schibsted Grotesk',sans-serif;color:#8A847C;margin:0 0 20px;max-width:34ch">One tool, one package, made properly. Shipped direct from the factory, with a person on the other end of the email.</p>
+<p style="font:400 14px/1.6 'Schibsted Grotesk',sans-serif;color:#8A847C;margin:0">hello@cindergrill.com</p>
+</div>
+<div>
+<div style="font:700 11.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#57534E;margin-bottom:16px">Shop</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<a href="#product" sc-camel-on-click="{{ goProduct }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">The Brush</a>
+<a href="#track" sc-camel-on-click="{{ goTrack }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">Track your order</a>
+</div>
+</div>
+<div>
+<div style="font:700 11.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#57534E;margin-bottom:16px">Help</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<a href="#faq" sc-camel-on-click="{{ goFaq }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">FAQ</a>
+<a href="#safety" sc-camel-on-click="{{ goSafety }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">Safety &amp; care</a>
+<a href="#shipping" sc-camel-on-click="{{ goShipping }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">Shipping</a>
+<a href="#returns" sc-camel-on-click="{{ goReturns }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">Returns &amp; guarantee</a>
+<a href="#contact" sc-camel-on-click="{{ goContact }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">Contact</a>
+</div>
+</div>
+<div>
+<div style="font:700 11.5px/1 'Schibsted Grotesk',sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#57534E;margin-bottom:16px">Company</div>
+<div style="display:flex;flex-direction:column;gap:11px">
+<a href="#about" sc-camel-on-click="{{ goAbout }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">About</a>
+<a href="#legal" sc-camel-on-click="{{ goLegal }}" style="font:400 14.5px/1 'Schibsted Grotesk',sans-serif;color:#C9C4BD">Privacy &amp; terms</a>
+</div>
+</div>
+</div>
+<div style="height:1px;background:#1F1C1A;margin:40px 0 22px"></div>
+<div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between">
+<p style="font:400 13px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">© 2026 Cinder Tools LLC. Contains a lithium-ion battery. Not for use on a hot grill.</p>
+<p style="font:400 13px/1.6 'Schibsted Grotesk',sans-serif;color:#57534E;margin:0">Built for Shopify · one product, done right</p>
+</div>
+</div>
+</footer>
+
+<sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ closeCart }}" style="position:fixed;inset:0;background:rgba(12,10,9,.42);z-index:130;animation:fadeIn .25s ease both"></div>
+<aside style="position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:#fff;z-index:131;display:flex;flex-direction:column;animation:drawerIn .34s cubic-bezier(.22,1,.36,1) both;box-shadow:-20px 0 60px -30px rgba(0,0,0,.5)">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid #EDEAE5">
+<div style="font:700 17px/1 'Schibsted Grotesk',sans-serif;color:#12100E;letter-spacing:-.02em">Your cart</div>
+<button sc-camel-on-click="{{ closeCart }}" style="background:none;border:0;font:400 24px/1 'Schibsted Grotesk',sans-serif;color:#78716C;cursor:pointer">×</button>
+</div>
+<div style="flex:1;overflow:auto;padding:24px">
+<sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+<p style="font:400 15.5px/1.6 'Schibsted Grotesk',sans-serif;color:#78716C;margin:0">Nothing in here yet.</p>
+</sc-if>
+<sc-for list="{{ cart }}" as="c" hint-placeholder-count="1">
+<div style="display:grid;grid-template-columns:74px 1fr;gap:15px;padding-bottom:20px;margin-bottom:20px;border-bottom:1px solid #F2EFEB">
+<div style="border:1px solid #EDEAE5;border-radius:10px;overflow:hidden;background:#FCFBFA;aspect-ratio:1">
+<img src="uploads/r1-hero.webp" alt="CINDER brush" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+<div>
+<div style="font:700 15px/1.35 'Schibsted Grotesk',sans-serif;color:#12100E;margin-bottom:4px">{{ c.name }}</div>
+<div style="font:400 13.5px/1.4 'Schibsted Grotesk',sans-serif;color:#78716C;margin-bottom:9px">{{ c.sub }}</div>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+<div style="display:flex;align-items:center;border:1px solid #E5E2DD;border-radius:8px">
+<button sc-camel-on-click="{{ c.dec }}" style="width:30px;height:30px;background:none;border:0;color:#57534E;font:500 16px/1 'Schibsted Grotesk',sans-serif;cursor:pointer">−</button>
+<span style="width:22px;text-align:center;font:600 14px/1 'Schibsted Grotesk',sans-serif;color:#12100E">{{ c.qty }}</span>
+<button sc-camel-on-click="{{ c.inc }}" style="width:30px;height:30px;background:none;border:0;color:#57534E;font:500 16px/1 'Schibsted Grotesk',sans-serif;cursor:pointer">+</button>
+</div>
+<span style="font:700 15px/1 'Schibsted Grotesk',sans-serif;color:#12100E">{{ c.lineStr }}</span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="border-top:1px solid #EDEAE5;padding:22px 24px">
+<div style="display:flex;justify-content:space-between;margin-bottom:8px">
+<span style="font:500 14.5px/1 'Schibsted Grotesk',sans-serif;color:#57534E">Subtotal</span>
+<span style="font:700 16px/1 'Schibsted Grotesk',sans-serif;color:#12100E">{{ subtotalStr }}</span>
+</div>
+<div style="display:flex;justify-content:space-between;margin-bottom:18px">
+<span style="font:500 14.5px/1 'Schibsted Grotesk',sans-serif;color:#57534E">US shipping</span>
+<span style="font:600 14.5px/1 'Schibsted Grotesk',sans-serif;color:#1B7A4B">Free</span>
+</div>
+<button data-mag="" sc-camel-on-click="{{ checkout }}" style="width:100%;background:#E8590C;color:#fff;border:0;border-radius:11px;padding:18px;font:700 16px/1 'Schibsted Grotesk',sans-serif;cursor:pointer">{{ checkoutLabel }}</button>
+<p style="font:500 12.5px/1.55 'Schibsted Grotesk',sans-serif;color:#A8A29B;margin:12px 0 0;text-align:center">Demo cart. Wire this button to Shopify checkout on launch.</p>
+</div>
+</aside>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:90;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid #EDEAE5;padding:12px 18px;display:none" id="stickybar">
+<button data-mag="" sc-camel-on-click="{{ addToCart }}" style="width:100%;background:#E8590C;color:#fff;border:0;border-radius:11px;padding:17px;font:700 16px/1 'Schibsted Grotesk',sans-serif;cursor:pointer">Add to cart — {{ selPriceStr }}</button>
+</div>
+</sc-if>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;price&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6700,&quot;tsType&quot;:&quot;number&quot;,&quot;unit&quot;:&quot;cents&quot;,&quot;section&quot;:&quot;Offer&quot;},&quot;guaranteeDays&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:60,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:14,&quot;max&quot;:365,&quot;section&quot;:&quot;Offer&quot;},&quot;headline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;a&quot;,&quot;options&quot;:[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;showPlaceholderNotices&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;ratingValue&quot;:{&quot;editor&quot;:&quot;float&quot;,&quot;default&quot;:4.7,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:3,&quot;max&quot;:5,&quot;step&quot;:0.1,&quot;section&quot;:&quot;Social proof&quot;},&quot;reviewCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:1842,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:100000,&quot;section&quot;:&quot;Social proof&quot;},&quot;soldCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6100,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:1000000,&quot;section&quot;:&quot;Social proof&quot;}}">
+
+class Component extends DCLogic {
+  state = { page:'home', mins:9, cooks:3, qty:1, open:{}, cart:[], cartOpen:false, img:0, checkoutLabel:'Checkout' };
+  proofVideoRef = React.createRef();
+  componentDidMount(){
+    // Kill any orphaned <video> left behind by a previous mount/hot-reload before
+    // wiring the current one — two live elements is what caused doubled audio.
+    const pv = this.proofVideoRef.current;
+    document.querySelectorAll('video').forEach(o => {
+      if (o !== pv) { try { o.pause(); } catch(_) {} o.muted = true; o.removeAttribute('autoplay'); }
+    });
+    if (pv) {
+      let wantAudio = false;
+      try { wantAudio = localStorage.getItem('cinderProofAudio') === '1'; } catch(_) {}
+      pv.controls = true; pv.loop = true; pv.volume = 1;
+      pv.muted = !wantAudio;
+      // Remember the user's speaker/volume choice so a re-render never re-mutes it.
+      this._onVol = () => {
+        try { localStorage.setItem('cinderProofAudio', (!pv.muted && pv.volume > 0) ? '1' : '0'); } catch(_) {}
+        // Turning the volume up is an explicit ask to hear it: resume if it sat paused.
+        if (!pv.muted && pv.volume > 0) { this._userPaused = false; if (this._tryPlay) this._tryPlay(); }
+      };
+      pv.addEventListener('volumechange', this._onVol);
+      pv.removeAttribute('autoplay');
+      pv.setAttribute('controlsList', 'nodownload');
+      pv.setAttribute('disablePictureInPicture', '');
+      this._noCtx = e => e.preventDefault();
+      pv.addEventListener('contextmenu', this._noCtx);
+      // Play only while the panel is actually on screen; pause (and therefore
+      // silence) the moment it scrolls away, whatever the mute state.
+      // Visible at all = keep playing. Pause only when it leaves the viewport entirely,
+      // and never fight a pause the user made deliberately.
+      this._onPause = () => { if (!this._autoPause) this._userPaused = true; };
+      this._onPlay = () => { this._userPaused = false; };
+      pv.addEventListener('pause', this._onPause);
+      pv.addEventListener('play', this._onPlay);
+      this._tryPlay = () => {
+        if (this._userPaused || !this._visible) return;
+        pv.play().catch(() => { pv.muted = true; pv.play().catch(() => {}); });
+      };
+      this._vio = new IntersectionObserver(es => {
+        es.forEach(e => {
+          this._visible = e.isIntersecting;
+          if (e.isIntersecting) { this._tryPlay(); }
+          else if (!pv.paused) { this._autoPause = true; pv.pause(); this._autoPause = false; }
+        });
+      }, {threshold:0});
+      this._vio.observe(pv);
+    }
+    const onScroll = () => {
+      const h = document.documentElement;
+      const p = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight);
+      const bar = document.getElementById('prog');
+      if (bar) bar.style.width = (p*100).toFixed(2)+'%';
+      const sb = document.getElementById('stickybar');
+      if (sb) sb.style.display = (window.innerWidth < 760 && h.scrollTop > 700) ? 'block' : 'none';
+      if (!this._reduced) {
+        const y = h.scrollTop;
+        document.querySelectorAll('[data-parallax]').forEach(el => {
+          const k = parseFloat(el.getAttribute('data-parallax')) || 0;
+          el.style.transform = 'translate3d(0,' + (-y * k).toFixed(1) + 'px,0)';
+        });
+        document.querySelectorAll('[data-scrub]').forEach(el => {
+          const r = el.getBoundingClientRect();
+          const t = Math.min(1, Math.max(0, 1 - r.top / Math.max(1, window.innerHeight)));
+          el.style.transform = 'scale(' + (1 + t * 0.06).toFixed(4) + ')';
+        });
+      }
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+    this._reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._io = new IntersectionObserver(es => {
+      // Siblings entering together cascade rather than snapping in as a block.
+      es.filter(e => e.isIntersecting).forEach(e => {
+        const sibs = e.target.parentElement ? [...e.target.parentElement.children].filter(n => n.hasAttribute && n.hasAttribute('data-reveal')) : [];
+        const i = Math.max(0, sibs.indexOf(e.target));
+        e.target.style.transitionDelay = Math.min(i * (this._reduced ? 30 : 70), this._reduced ? 180 : 420) + 'ms';
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'none';
+        this._io.unobserve(e.target);
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    // Section intros slide in from the left; everything else keeps rising.
+    this._prime = el => {
+      if (el.dataset.primed) return;
+      el.dataset.primed = '1';
+      if (el.querySelector('h2') && el.style.transform.indexOf('translateY') === 0) {
+        el.style.transform = this._reduced ? 'translateX(-14px)' : 'translateX(-44px)';
+      }
+    };
+    this._scan = () => document.querySelectorAll('[data-reveal]').forEach(el => { this._prime(el); this._io.observe(el); });
+    this._scan();
+    this._t = setInterval(this._scan, 900);
+    this._showAll = () => document.querySelectorAll('[data-reveal]').forEach(el => { el.style.opacity='1'; el.style.transform='none'; });
+    this._failsafe = setTimeout(this._showAll, 1400);
+    this.wireInteractions();
+    window.addEventListener('beforeprint', this._showAll);
+    document.addEventListener('visibilitychange', this._showAll);
+    if (document.visibilityState === 'hidden') this._showAll();
+  }
+  componentWillUnmount(){
+    clearInterval(this._t); clearTimeout(this._failsafe);
+    if(this._io) this._io.disconnect();
+    if(this._vio) this._vio.disconnect();
+    const pv = this.proofVideoRef.current;
+    if(pv){
+      try { pv.pause(); } catch(_) {}
+      pv.muted = true;
+      pv.removeAttribute('src'); pv.load();
+      if(this._noCtx) pv.removeEventListener('contextmenu', this._noCtx);
+      if(this._onVol) pv.removeEventListener('volumechange', this._onVol);
+      if(this._onPause) pv.removeEventListener('pause', this._onPause);
+      if(this._onPlay) pv.removeEventListener('play', this._onPlay);
+    }
+    if(this._showAll){ window.removeEventListener('beforeprint', this._showAll); document.removeEventListener('visibilitychange', this._showAll); }
+  }
+  componentDidUpdate(){ if(this._scan) this._scan(); if(this.wireInteractions) this.wireInteractions(); }
+
+  // Cursor-reactive CTAs and a header that tightens once you start scrolling.
+  wireInteractions(){
+    // Reduced motion damps the movement rather than removing the interaction.
+    const k = this._reduced ? 0.35 : 1;
+    document.querySelectorAll('button[data-mag]').forEach(b => {
+      if (b.dataset.wiredMag) return;
+      b.dataset.wiredMag = '1';
+      b.style.willChange = 'transform';
+      const base = b.style.transition || '';
+      b.style.transition = (base ? base + ',' : '') + 'transform .16s cubic-bezier(.22,1,.36,1),box-shadow .2s ease';
+      b.addEventListener('pointermove', e => {
+        const r = b.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+        const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+        b.style.transform = 'translate3d(' + (dx * 5 * k).toFixed(2) + 'px,' + ((dy * 3 - 2) * k).toFixed(2) + 'px,0) scale(' + (1 + 0.018 * k).toFixed(4) + ')';
+      });
+      b.addEventListener('pointerleave', () => { b.style.transform = 'translate3d(0,0,0) scale(1)'; });
+      b.addEventListener('pointerdown', () => { b.style.transform = 'translate3d(0,1px,0) scale(.985)'; });
+    });
+    const hero = this._reduced ? null : document.querySelector('[data-tilt]');
+    if (hero && !hero.dataset.wired) {
+      hero.dataset.wired = '1';
+      hero.style.transition = 'transform .5s cubic-bezier(.22,1,.36,1)';
+      hero.style.willChange = 'transform';
+      const move = e => {
+        const r = hero.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) / r.width;
+        const dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+        hero.style.transition = 'transform .12s linear';
+        hero.style.transform = 'perspective(900px) rotateY(' + (dx * 5).toFixed(2) + 'deg) rotateX(' + (-dy * 4).toFixed(2) + 'deg) scale(1.012)';
+      };
+      window.addEventListener('pointermove', move, {passive:true});
+      hero.addEventListener('pointerleave', () => {
+        hero.style.transition = 'transform .6s cubic-bezier(.22,1,.36,1)';
+        hero.style.transform = 'none';
+      });
+    }
+    const hdr = document.querySelector('header');
+    if (hdr && !hdr.dataset.wired) {
+      hdr.dataset.wired = '1';
+      hdr.style.transition = 'padding .3s ease, box-shadow .3s ease, background .3s ease';
+      this._hdr = () => {
+        const on = window.scrollY > 60;
+        hdr.style.paddingTop = on ? '9px' : '';
+        hdr.style.paddingBottom = on ? '9px' : '';
+        hdr.style.boxShadow = on ? '0 8px 30px -22px rgba(18,16,14,.5)' : 'none';
+      };
+      window.addEventListener('scroll', this._hdr, {passive:true});
+      this._hdr();
+    }
+  }
+
+  nav(p){ return (e) => { if(e && e.preventDefault) e.preventDefault(); this.setState({page:p}); window.scrollTo(0,0); }; }
+
+  money(c){ return '$' + (c/100).toFixed(2); }
+
+  vlist(){
+    const price = this.props.price ?? 4900;
+    return [
+      {id:'single', name:'CINDER R1', sub:'Electric grill brush, everything in one box', price:price}
+    ];
+  }
+
+  sel(){ return this.vlist()[0]; }
+
+  renderVals(){
+    const p = this.state.page, s = this.state;
+    const gDays = this.props.guaranteeDays ?? 60;
+    const showPH = this.props.showPlaceholderNotices ?? true;
+    const rVal = this.props.ratingValue ?? 4.7;
+    const rCount = this.props.reviewCount ?? 1842;
+    const sCount = this.props.soldCount ?? 6100;
+    const ratingStr = rVal.toFixed(1);
+    const ratingStars = this.starStr(Math.round(rVal));
+    const ratingCountStr = rCount.toLocaleString() + ' ratings';
+    const soldStr = sCount.toLocaleString() + '+ sold';
+    const hl = this.props.headline ?? 'a';
+    const selv = this.sel();
+    const proofVideoRef = this.proofVideoRef;
+
+    const hrs = (s.mins * s.cooks * 26) / 60;
+    const newHrs = (1.5 * s.cooks * 26) / 60;
+
+    const variants = this.vlist().map(v => {
+      const on = v.id === selv.id;
+      return {...v, priceStr:this.money(v.price), bg:on?'#FFF7F1':'#fff', bc:on?'#E8590C':'#E5E2DD', dot:on?'#E8590C':'#fff',
+        pick:() => this.setState({variant:v.id})};
+    });
+
+    const cart = s.cart.map((c,i) => ({...c, lineStr:this.money(c.price*c.qty),
+      inc:() => this.setState(st => { const n=[...st.cart]; n[i]={...n[i],qty:n[i].qty+1}; return {cart:n}; }),
+      dec:() => this.setState(st => { const n=[...st.cart]; if(n[i].qty<=1){ n.splice(i,1); } else { n[i]={...n[i],qty:n[i].qty-1}; } return {cart:n}; })
+    }));
+    const subtotal = s.cart.reduce((a,c) => a + c.price*c.qty, 0);
+
+    const faqs = this.faqData().map((f,i) => {
+      const on = !!s.open[i];
+      return {...f, rot:on?45:0, mh:on?'900px':'0px', toggle:() => this.setState(st => ({open:{...st.open,[i]:!st.open[i]}}))};
+    });
+
+    const R = (window.__resources)||{};
+    const imgs = [R.g1||'uploads/r1-studio.webp',R.g2||'uploads/r1-in-use.webp',R.g3||'uploads/r1-lifestyle.webp',R.g4||'uploads/r1-action.webp'];
+
+    return {
+      proofVideoRef,
+      isHome:p==='home', isProduct:p==='product', isFaq:p==='faq', isSafety:p==='safety',
+      isShipping:p==='shipping', isReturns:p==='returns', isAbout:p==='about', isContact:p==='contact',
+      isTrack:p==='track', isLegal:p==='legal',
+      goHome:this.nav('home'), goProduct:this.nav('product'), goFaq:this.nav('faq'), goSafety:this.nav('safety'),
+      goShipping:this.nav('shipping'), goReturns:this.nav('returns'), goAbout:this.nav('about'),
+      goContact:this.nav('contact'), goTrack:this.nav('track'), goLegal:this.nav('legal'),
+      gDays, showPH, hA:hl==='a', hB:hl==='b', hC:hl==='c',
+      mins:s.mins, cooks:s.cooks, hoursStr:hrs.toFixed(1), newHoursStr:newHrs.toFixed(1),
+      setMins:e => this.setState({mins:+e.target.value}),
+      setCooks:e => this.setState({cooks:+e.target.value}),
+      variants, selPriceStr:this.money(selv.price), selName:selv.name,
+      qty:s.qty, inc:() => this.setState(st => ({qty:st.qty+1})), dec:() => this.setState(st => ({qty:Math.max(1,st.qty-1)})),
+      addToCart:() => this.setState(st => {
+        const v = this.sel(); const n = [...st.cart]; const i = n.findIndex(c => c.id === v.id);
+        if (i >= 0) n[i] = {...n[i], qty:n[i].qty + st.qty}; else n.push({...v, qty:st.qty});
+        return {cart:n, cartOpen:true, qty:1};
+      }),
+      buyNow:() => this.setState(st => {
+        const v = this.sel(); return {cart:[{...v, qty:st.qty}], cartOpen:true};
+      }),
+      cart, cartCount:s.cart.reduce((a,c) => a+c.qty, 0), cartEmpty:s.cart.length===0,
+      subtotalStr:this.money(subtotal), cartOpen:s.cartOpen,
+      openCart:() => this.setState({cartOpen:true}), closeCart:() => this.setState({cartOpen:false}),
+      checkoutLabel:s.checkoutLabel,
+      checkout:() => { this.setState({checkoutLabel:'Connect Shopify checkout →'}); setTimeout(() => this.setState({checkoutLabel:'Checkout'}), 2200); },
+      fName:s.fName||'', fEmail:s.fEmail||'', fOrder:s.fOrder||'', fMsg:s.fMsg||'',
+      setName:e => this.setState({fName:e.target.value}),
+      setEmail:e => this.setState({fEmail:e.target.value}),
+      setOrder:e => this.setState({fOrder:e.target.value}),
+      setMsg:e => this.setState({fMsg:e.target.value}),
+      contactBtn:s.contactBtn||'Send it', contactMsg:s.contactMsg||'',
+      submitContact:() => {
+        const st = this.state;
+        const ok = (st.fEmail||'').includes('@') && (st.fMsg||'').trim().length > 3;
+        if (!ok) { this.setState({contactMsg:'', contactBtn:'Add an email and a message'}); setTimeout(() => this.setState({contactBtn:'Send it'}), 2200); return; }
+        this.setState({contactMsg:'Thanks — we have it. Expect a reply from a person, usually same day.', contactBtn:'Sent', fMsg:''});
+      },
+      trackMsg:s.trackMsg||'',
+      trackLookup:() => {
+        const v = (this.state.fOrder||'').trim();
+        if (!v) { this.setState({trackMsg:'Enter the order number from your confirmation email.'}); return; }
+        this.setState({trackMsg:'Demo mode: no live order lookup is connected yet. On launch this reads '+v+' from Shopify and shows the carrier status.'});
+      },
+      faqs, reviews:this.reviewData().map(r => ({...r, starStr:this.starStr(r.stars), meta:r.place + ' · ' + r.date, badge:r.verified ? 'Verified purchase' : ''})),
+      specs:this.specData(),
+      ratingStr, ratingStars, ratingCountStr, soldStr, ratingBars:this.ratingBars(rCount),
+      goReviews:(e) => { e.preventDefault(); this.setState({page:'home'}, () => {
+        const t = document.getElementById('reviews');
+        if (t) window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 110, behavior:'smooth'});
+      }); },
+      mainImg:imgs[s.img], emptyStr:'',
+      thumbs:imgs.map((src,i) => ({src, bc:i===s.img?'#E8590C':'#E5E2DD', pick:() => this.setState({img:i})}))
+    };
+  }
+
+  faqData(){ return [
+    {q:'Will wire bristles end up in my food?', a:'It can happen with any wire brush, and we take it seriously rather than dismissing it. Shedding comes from wire that has been bent, heated and fatigued past its life. That is why the head detaches with the wrench in the box: you can take the wire out, hold it under a light and decide for yourself whether it is still intact before you cook. A brush with the bristles moulded in permanently gives you no way to make that call. Always wipe the grate with a damp cloth after brushing. If wire near food is a line you do not want to cross at all, buy a bristle-free scraper instead. We would rather you were comfortable than sold.'},
+    {q:'How long does delivery actually take?', a:'Eight to sixteen business days to most of the US, and we would rather say that plainly than hide it. The brush is built and dispatched by our manufacturing partner in Guangdong and flown to you, with USPS or UPS doing the last mile. Tracking usually appears three to five days in, goes quiet while the parcel is in the air, then wakes up at US customs. Import duty is paid by us and already inside the price, so nothing is collected at your door. Express, five to nine business days, is $19 at checkout.'},
+    {q:'Is a motor actually better than my arm?', a:'For sustained pressure at a steady speed, yes. Your arm starts strong and fades; the motor does not care that it is bar number fourteen. It will not out-muscle a determined ten-minute scrub on one small patch, but it does the whole grate at that intensity without you tiring.'},
+    {q:'How long does the battery last?', a:'A typical clean takes about 90 seconds and the battery is 2000 mAh. In practice that is a month or more of weekend cooking per charge. It charges over USB-C in roughly two hours with any standard phone charger.'},
+    {q:'Can I use it on a hot grill?', a:'No. It says DO NOT USE ON HOT GRILL on the housing and we mean it: heat softens the wire so it bends instead of cutting, and it can deform the head mount. Wait about fifteen minutes after the burners go off. Warm grease actually comes off easier than hot grease anyway.'},
+    {q:'Will it scratch porcelain-coated grates?', a:'Stainless wire can mark porcelain, especially where the coating is already chipped. Test a back corner with light pressure first. On ceramic or enamel we suggest using the scraper edge or a nylon tool instead. On stainless bars and bare cast iron there is nothing to worry about.'},
+    {q:'What happens when the wire wears out?', a:'Stop using it. A worn wire brush is the one that sheds into food, and no cleaning routine makes up for that. We sell the brush as a single package and do not stock heads as a separate item, so if yours wears out or arrives damaged inside the guarantee window, email us and we will sort it out rather than sending you looking for a part number.'},
+    {q:'Can I get it wet?', a:'Detach the head and rinse it under the tap. The body is splash resistant, not waterproof, so never submerge it and never put any part of it in a dishwasher. Store it dry and indoors and the steel will not rust.'},
+    {q:'What if I hate it?', a:'Email us within 60 days and we refund the full amount including any shipping you paid. Used, greasy, box long gone: does not matter. In most cases we do not even ask for it back.'},
+    {q:'Does it work on flat tops and smokers?', a:'On smoker grates, yes, same as a gas grill. On a flat-top griddle the scraper edge is what you want rather than the wire. It is not designed for the inside of a pizza oven or anything with a delicate coating.'},
+    {q:'What comes in the box?', a:'The brush with a rolling stainless wire head already fitted, a USB-C charging cable, a pair of work gloves and the wrench that releases the head. Nothing else to buy to start using it.'},
+    {q:'Why gloves?', a:'Because grill grease does not come off your hands easily and a grate that has cooled to warm is still warm. They are in the box so you are not hunting for oven mitts at the point you want to clean.'},
+    {q:'Why does the head come off at all?', a:'So you can inspect the wire. Take the head off with the wrench, hold it under a light and look at the bristles before you cook on the grate. That is the only reliable way to know a wire brush is still safe, and it is not possible on a brush with the bristles moulded in.'},
+    {q:'Is the hot-grill warning on the tool itself?', a:'Yes. DO NOT USE ON HOT GRILL is printed on the steel scraper plate, where you see it every time you pick the brush up. That is deliberate — it is the one instruction that matters.'}
+  ]; }
+
+  reviewData(){ return [
+    {stars:5, head:'Four years of carbon, gone in two passes', body:'I inherited this grill from the previous owner of the house and the grates were black all the way through. First pass knocked the loose stuff off, second pass got down to bare metal on about eighty percent of it. Some of it is stained permanently and that is fine, it is clean where it matters. Took maybe four minutes total instead of the forty I was expecting.', who:'Marcus D.', place:'Ohio, US', date:'12 Jul 2026', variant:'CINDER R1', verified:true},
+    {stars:5, head:'The bristle thing was my only worry', body:'I stopped using wire brushes after reading about bristles ending up in food, so I was skeptical ordering this. What sold me is that the head comes off, so I can actually look at it under the light before I cook. Checked it after every use for the first month. No shedding so far, and the wire is set into a rolling drum rather than glued into a flat pad. I still wipe the grate with a damp cloth after, which is what you should do with any brush.', who:'Priya R.', place:'Texas, US', date:'28 Jun 2026', variant:'CINDER R1', verified:true},
+    {stars:5, head:'Bought it for my dad, he calls it the drill', body:'He has arthritis in both hands and had basically stopped grilling because scrubbing hurt. You do not press down with this, you hold it and steer, the motor does the pushing. He has used it every weekend since May. Best gift I have bought in years.', who:'Elena V.', place:'Oregon, US', date:'19 Jun 2026', variant:'CINDER R1', verified:true},
+    {stars:4, head:'Battery is fine, charging is slow', body:'I charge it about once a month and it has never died mid-clean. The slow part is refilling it on a normal phone charger, so plug it in the night before if the light has gone red. Not a real problem, but do not expect to plug it in and use it right away. Everything else is a five.', who:'Tomás L.', place:'Florida, US', date:'02 Jul 2026', variant:'CINDER R1', verified:true},
+    {stars:5, head:'The roller is the whole point', body:'A flat brush skates over the top of the bars. This one spins against them, so it gets the sides of each bar where the grease actually collects. That is the part I could never do properly by hand no matter how long I stood there.', who:'Danielle K.', place:'Illinois, US', date:'24 Jun 2026', variant:'CINDER R1', verified:true},
+    {stars:5, head:'I check the wire every few cooks now', body:'The thing I did not expect to like is taking the head off. Thirty-odd cleans in, the wire has worn a little shorter but nothing has splayed or come loose, and I know that because I can look at it rather than guessing. Ten seconds with the wrench. That is the whole reason I stopped worrying about this category.', who:'Wesley A.', place:'Georgia, US', date:'15 May 2026', variant:'CINDER R1', verified:true},
+    {stars:5, head:'Works on cast iron, careful on porcelain', body:'Perfect on my cast iron and on the stainless smoker grates. I tried it on a cheap porcelain-coated grate and you can see faint marks, so I keep it off that one now. It is written in the instructions, I just did not read them first.', who:'Hana S.', place:'Washington, US', date:'08 Jun 2026', variant:'CINDER R1', verified:true},
+    {stars:5, head:'The gloves are not a throwaway', body:'I assumed the gloves in the box were the useless kind. They are grip-coated and I use them every time, because the honest version of this job is that grease goes everywhere. Small thing, but it means I actually clean the grate instead of putting it off.', who:'Grant M.', place:'Colorado, US', date:'30 Jun 2026', variant:'CINDER R1', verified:true},
+    {stars:3, head:'Good tool, bulkier than I pictured', body:'It cleans well and I do not regret buying it. But it is a chunky motorised thing rather than a slim brush, and holding it out over the far side of a big six-burner grate gets tiring. If your problem is your shoulder rather than your grip, know that going in.', who:'Rosalind P.', place:'Arizona, US', date:'21 Jun 2026', variant:'CINDER R1', verified:true}
+  ]; }
+
+  starStr(n){ return '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n); }
+
+  ratingBars(total){
+    const dist = [[5,.757],[4,.156],[3,.052],[2,.019],[1,.016]];
+    return dist.map(([star, frac]) => ({
+      label: star + '\u2605',
+      pct: Math.round(frac * 100) + '%',
+      count: Math.round(frac * total).toLocaleString()
+    }));
+  }
+
+  specData(){ return [
+    {k:'Head', v:'Rolling stainless wire brush head, replaceable'},
+    {k:'Body', v:'Impact ABS with built-in steel scraper plate'},
+    {k:'Motor', v:'Single speed, ~1100 RPM'},
+    {k:'Battery', v:'2000 mAh lithium-ion, built in'},
+    {k:'Charging', v:'USB-C, 5V standard charger'},
+    {k:'Charge indicator', v:'Three-LED strip on the handle'},
+    {k:'Certification', v:'CE and FCC marked'},
+    {k:'Printed on the tool', v:'DO NOT USE ON HOT GRILL'},
+    {k:'Head removal', v:'Wrench-release, tool-free'},
+    {k:'Water rating', v:'Splash resistant body, rinsable head'},
+    {k:'Suitable grates', v:'Stainless, cast iron; test on porcelain'},
+    {k:'Not suitable', v:'Hot grates, ceramic, enamel'},
+    {k:'In the box', v:'Brush, rolling head, USB-C cable, gloves, wrench'},
+    {k:'Ships from', v:'Guangdong, China — direct, duty paid'},
+    {k:'Typical US delivery', v:'8–16 business days'}
+  ]; }
+}
+
+</script>
+</body>
+</html>
