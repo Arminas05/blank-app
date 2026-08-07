@@ -1,0 +1,68 @@
+<section class="section section--surface">
+  <div class="wrap">
+    <div data-reveal style="max-width:72ch">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+
+      {%- for block in section.blocks -%}
+        <p
+          {{ block.shopify_attributes }}
+          style="margin-top:22px;font:400 17px/1.75 var(--font);color:var(--body)">
+          {{ block.settings.text }}
+        </p>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Price justification",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Price"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "\"Why is it sixty-seven dollars when a brush is nine?\""
+    }
+  ],
+  "blocks": [
+    {
+      "type": "para",
+      "name": "Paragraph",
+      "settings": [{ "type": "textarea", "id": "text", "label": "Text" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Price justification",
+      "blocks": [
+        {
+          "type": "para",
+          "settings": {
+            "text": "Because most of the cost is a motor, a lithium cell and a locking head mechanism, and none of those exist in a nine-dollar brush. That's the whole answer."
+          }
+        },
+        {
+          "type": "para",
+          "settings": {
+            "text": "The comparison people actually make is against the brush they buy every spring, throw out every fall and complain about all summer. Seven of those is roughly this. The difference is that this one has a motor doing the pushing and a head you can take off and inspect."
+          }
+        },
+        {
+          "type": "para",
+          "settings": {
+            "text": "We sell one product at one price. There's no cheap version to upsell you off, no premium version we're steering you toward and no accessory list at checkout. What's in the box is the whole offer."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

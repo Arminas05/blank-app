@@ -1,0 +1,122 @@
+{% comment %}
+  Grate compatibility. Reads the shop metafield grillingbrush.grate_compat (JSON list of
+  {surface, verdict, note}); section blocks are the fallback.
+{% endcomment %}
+{%- assign rows = shop.metafields.grillingbrush.grate_compat.value -%}
+
+<section class="section">
+  <div class="wrap">
+    <div data-reveal style="max-width:72ch">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div style="margin-top:36px;max-width:80ch">
+      {%- if rows != blank and rows.size > 0 -%}
+        {%- for row in rows -%}
+          <div
+            data-reveal
+            style="display:grid;grid-template-columns:minmax(160px,1fr) 2fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line-soft)">
+            <strong style="font:700 16px/1.4 var(--font);color:var(--ink)">{{ row.surface }}</strong>
+            <div>
+              <p style="margin:0 0 4px;font:700 14px/1.4 var(--font);color:var(--ember)">
+                {{ row.verdict }}
+              </p>
+              <p style="margin:0;font:400 15px/1.7 var(--font);color:var(--body)">{{ row.note }}</p>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          <div
+            data-reveal
+            {{ block.shopify_attributes }}
+            style="display:grid;grid-template-columns:minmax(160px,1fr) 2fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line-soft)">
+            <strong style="font:700 16px/1.4 var(--font);color:var(--ink)">
+              {{ block.settings.surface }}
+            </strong>
+            <div>
+              <p style="margin:0 0 4px;font:700 14px/1.4 var(--font);color:var(--ember)">
+                {{ block.settings.verdict }}
+              </p>
+              <p style="margin:0;font:400 15px/1.7 var(--font);color:var(--body)">
+                {{ block.settings.note }}
+              </p>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Grate compatibility",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Reads the shop metafield grillingbrush.grate_compat (JSON) when set."
+    },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Grate compatibility"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Surface",
+      "settings": [
+        { "type": "text", "id": "surface", "label": "Surface" },
+        { "type": "text", "id": "verdict", "label": "Verdict" },
+        { "type": "textarea", "id": "note", "label": "Note" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grate compatibility",
+      "blocks": [
+        {
+          "type": "row",
+          "settings": {
+            "surface": "Stainless steel bars",
+            "verdict": "Ideal",
+            "note": "Full pressure, no concerns."
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "surface": "Bare cast iron",
+            "verdict": "Ideal",
+            "note": "Re-oil after cleaning as you normally would."
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "surface": "Porcelain-coated",
+            "verdict": "Test first",
+            "note": "Test a back corner first, use light pressure and keep moving. Stainless wire can mark a chipped coating."
+          }
+        },
+        {
+          "type": "row",
+          "settings": {
+            "surface": "Ceramic or enamel",
+            "verdict": "Not recommended",
+            "note": "Use the scraper edge or a nylon tool instead."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

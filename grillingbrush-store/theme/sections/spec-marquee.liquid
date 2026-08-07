@@ -1,0 +1,61 @@
+<div class="marquee">
+  {% comment %}
+    The track is duplicated so the -50% keyframe lands on an identical frame and
+    the loop is seamless. The clone is aria-hidden so nothing is announced twice.
+  {% endcomment %}
+  <div class="marquee__track" style="animation-duration:{{ section.settings.speed }}s">
+    {%- for i in (1..2) -%}
+      <div
+        style="display:flex;gap:40px"
+        {% if forloop.last %}aria-hidden="true"{% endif %}>
+        {%- for block in section.blocks -%}
+          <span class="marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+          <span class="marquee__item" aria-hidden="true">&middot;</span>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Spec marquee",
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Loop duration",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Spec",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "USB-C rechargeable"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spec marquee",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Detachable head — replace, don't risk it" } },
+        { "type": "item", "settings": { "text": "Thickened stainless wire" } },
+        { "type": "item", "settings": { "text": "USB-C rechargeable" } },
+        { "type": "item", "settings": { "text": "Built-in steel scraper" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

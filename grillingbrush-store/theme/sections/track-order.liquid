@@ -1,0 +1,72 @@
+{% comment %}
+  Order tracking. The prototype's trackLookup was a stub; there is no Liquid API
+  for looking an order up by number, so this points at the two things that do
+  work: the order-status link in the confirmation email, and the logged-in
+  account order list (SHOPIFY-HANDOFF.md §4).
+
+  If you install AfterShip or 17Track, drop its app block in here.
+{% endcomment %}
+<section class="section">
+  <div class="wrap">
+    <div style="max-width:640px" data-reveal>
+      <h1 class="h2">{{ page.title | default: section.settings.heading }}</h1>
+      <p class="lede" style="margin-top:20px">{{ section.settings.body }}</p>
+
+      <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+        {%- if shop.customer_accounts_enabled -%}
+          <a class="btn btn--ink" href="{{ routes.account_url }}">
+            {{ section.settings.account_label }}
+          </a>
+        {%- endif -%}
+        <a class="btn btn--ghost" href="mailto:{{ settings.support_email }}">
+          {{ section.settings.email_label }}
+        </a>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == '@app' -%}
+          <div style="margin-top:36px">{% render block %}</div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if section.settings.note != blank -%}
+        <div class="notice-placeholder" style="margin-top:36px">{{ section.settings.note }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Track order",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Track your order" },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Your confirmation email contains a direct order-status link — that is the most accurate view of where the parcel is. Tracking usually appears three to five days after you order, goes quiet while the parcel is in the air, then wakes up at US customs."
+    },
+    {
+      "type": "text",
+      "id": "account_label",
+      "label": "Account button label",
+      "default": "View my orders"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email button label",
+      "default": "Email us the order number"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Note",
+      "default": "Installing a tracking app (AfterShip, 17Track) adds a lookup box here — add its app block to this section once installed."
+    }
+  ],
+  "blocks": [{ "type": "@app" }]
+}
+{% endschema %}

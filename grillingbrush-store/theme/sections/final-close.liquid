@@ -1,0 +1,54 @@
+{%- assign product = section.settings.product | default: settings.featured_product -%}
+
+<section class="section section--dark">
+  <div class="wrap" style="text-align:center">
+    <div data-reveal style="max-width:64ch;margin:0 auto">
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+      <p style="margin-top:22px;font:400 17px/1.75 var(--font);color:#d6d3d1">
+        {{ section.settings.body }}
+      </p>
+
+      <div style="margin-top:32px;display:flex;justify-content:center">
+        {% render 'buy-buttons', product: product, label: section.settings.cta_label %}
+      </div>
+
+      <p style="margin-top:16px;font:400 14px/1.6 var(--font);color:#78716c">
+        {{ section.settings.reassurance }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final close",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The grate is going to need cleaning either way."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "The only question is whether it costs you ten minutes and a sore shoulder or ninety seconds and a wipe with a cloth. Try it for 60 days on our money."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Add to cart — {price}"
+    },
+    {
+      "type": "text",
+      "id": "reassurance",
+      "label": "Reassurance",
+      "default": "GrillingBrush R1 · free US shipping · 60-day money back"
+    }
+  ],
+  "presets": [{ "name": "Final close" }]
+}
+{% endschema %}

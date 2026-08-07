@@ -1,0 +1,101 @@
+{% comment %}
+  Real Shopify contact form — replaces the prototype's submitContact stub
+  (SHOPIFY-HANDOFF.md §4). Posts to the shop's customer-enquiry inbox.
+{% endcomment %}
+<section class="section">
+  <div class="wrap">
+    <div style="max-width:640px">
+      <div data-reveal>
+        <h1 class="h2">{{ page.title | default: section.settings.heading }}</h1>
+        {%- if page.content != blank -%}
+          <div class="rte" style="margin-top:20px">{{ page.content }}</div>
+        {%- else -%}
+          <p class="lede" style="margin-top:20px">{{ section.settings.body }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- form 'contact', class: 'contact-form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form-status form-status--ok">{{ section.settings.success_message }}</p>
+        {%- elsif form.errors -%}
+          <p class="form-status form-status--err">
+            {{ form.errors | default_errors }}
+          </p>
+        {%- endif -%}
+
+        <div class="field">
+          <label for="ContactName">Name</label>
+          <input
+            type="text"
+            id="ContactName"
+            name="contact[name]"
+            value="{{ form.name }}"
+            autocomplete="name"
+            required>
+        </div>
+
+        <div class="field">
+          <label for="ContactEmail">Email</label>
+          <input
+            type="email"
+            id="ContactEmail"
+            name="contact[email]"
+            value="{{ form.email }}"
+            autocomplete="email"
+            required>
+        </div>
+
+        <div class="field">
+          <label for="ContactOrder">Order number (optional)</label>
+          <input type="text" id="ContactOrder" name="contact[order]" value="{{ form.order }}">
+        </div>
+
+        <div class="field">
+          <label for="ContactBody">Message</label>
+          <textarea id="ContactBody" name="contact[body]" required>{{ form.body }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary">{{ section.settings.submit_label }}</button>
+      {%- endform -%}
+
+      <p style="margin-top:24px;font:400 14px/1.7 var(--font);color:var(--muted)">
+        {{ section.settings.footnote | replace: '{email}', settings.support_email }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Contact" },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "One inbox, answered by the people who make the thing. No ticket numbers, no chatbot."
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Submit label",
+      "default": "Send"
+    },
+    {
+      "type": "textarea",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks — that reached us. We reply to everything, usually within one business day."
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Footnote",
+      "info": "Use {email} for the support address from theme settings.",
+      "default": "Prefer email? Write to {email} directly."
+    }
+  ]
+}
+{% endschema %}

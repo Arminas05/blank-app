@@ -1,0 +1,38 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-product",
+      "blocks": {
+        "c1": { "type": "chip", "settings": { "text": "60-day money back" } },
+        "c2": { "type": "chip", "settings": { "text": "Free US shipping" } },
+        "c3": { "type": "chip", "settings": { "text": "Tracked, typically 10–14 days" } },
+        "c4": { "type": "chip", "settings": { "text": "Duties paid at checkout" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": {}
+    },
+    "marquee": { "type": "spec-marquee", "settings": {} },
+    "routine": { "type": "routine", "settings": {} },
+    "bristle": { "type": "bristle-truth", "settings": {} },
+    "proof": { "type": "proof-video", "settings": {} },
+    "how": { "type": "how-it-works", "settings": {} },
+    "kept": { "type": "kept-cut", "settings": {} },
+    "math": { "type": "time-math", "settings": {} },
+    "buy": { "type": "inline-buy", "settings": {} },
+    "compat": { "type": "grate-compat", "settings": {} },
+    "myths": { "type": "myths", "settings": {} },
+    "price": { "type": "price-justification", "settings": {} },
+    "reviews": { "type": "reviews", "settings": {} },
+    "guarantee": { "type": "guarantee", "settings": {} },
+    "faq": {
+      "type": "faq",
+      "settings": { "limit": 8, "more_label": "All questions", "more_url": "/pages/faq" }
+    },
+    "close": { "type": "final-close", "settings": {} }
+  },
+  "order": [
+    "hero", "marquee", "routine", "bristle", "proof", "how", "kept",
+    "math", "buy", "compat", "myths", "price", "reviews", "guarantee",
+    "faq", "close"
+  ]
+}

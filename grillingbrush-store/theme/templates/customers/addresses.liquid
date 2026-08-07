@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="wrap" style="max-width:640px">
+    <h1 class="h2">Addresses</h1>
+    {%- for address in customer.addresses -%}
+      <div style="border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:20px;margin-top:18px">
+        {{ address | format_address }}
+      </div>
+    {%- else -%}
+      <p class="lede" style="margin-top:20px">No addresses saved.</p>
+    {%- endfor -%}
+    <p style="margin-top:24px"><a href="{{ routes.account_url }}">Back to orders</a></p>
+  </div>
+</section>

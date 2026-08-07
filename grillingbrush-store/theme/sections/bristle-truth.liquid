@@ -1,0 +1,133 @@
+<section class="section section--dark">
+  <div class="wrap">
+    <div style="max-width:72ch" data-reveal>
+      <p class="eyebrow" style="color:#78716c">{{ section.settings.eyebrow }}</p>
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+      <p style="font:400 17px/1.75 var(--font);color:#d6d3d1;margin-top:22px">
+        {{ section.settings.intro }}
+      </p>
+      <p style="font:400 17px/1.75 var(--font);color:#d6d3d1">{{ section.settings.intro_2 }}</p>
+    </div>
+
+    <div class="grid-3" style="margin-top:52px">
+      {%- for block in section.blocks -%}
+        <div
+          data-reveal
+          {{ block.shopify_attributes }}
+          style="border:1px solid #292524;border-radius:var(--radius-sm);padding:28px;background:#1c1917">
+          <h3 class="h3" style="color:#fff">{{ block.settings.heading }}</h3>
+          <p style="margin:14px 0 0;font:400 15px/1.7 var(--font);color:#a8a29b">
+            {{ block.settings.text }}
+          </p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.footnote != blank -%}
+      <p
+        data-reveal
+        style="margin:44px 0 0;max-width:76ch;font:400 16px/1.75 var(--font);color:#d6d3d1;border-left:3px solid var(--ember);padding-left:20px">
+        {{ section.settings.footnote }}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.link_label != blank -%}
+      <p style="margin-top:26px">
+        <a
+          class="link-underline"
+          style="color:#fff"
+          href="{{ section.settings.link_url | default: '/pages/safety-and-care' }}">
+          {{ section.settings.link_label }}
+        </a>
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bristle truth",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The thing you already googled"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "\"Do wire bristles end up in the food?\""
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "It happens with wire brushes. Not often, but it happens, and the emergency-room stories are real enough that plenty of people have quit wire brushes entirely. We're not going to pretend ours is magic."
+    },
+    {
+      "type": "textarea",
+      "id": "intro_2",
+      "label": "Intro line 2",
+      "default": "Here is what actually causes it, and what this tool does about it."
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Our recommendation, printed in the box: wipe the grate with a folded damp paper towel after brushing, every time. Ten seconds. It catches anything loose and it works no matter whose brush you own. If that ritual still makes you uneasy, buy a bristle-free scraper instead of this. We'd rather lose the sale than argue you out of a real concern."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Read the safety and care page"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Point",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bristle truth",
+      "blocks": [
+        {
+          "type": "point",
+          "settings": {
+            "heading": "The cause is a worn head, not wire itself",
+            "text": "Bristles shed once the wire has been bent, heated and fatigued over a season or two. People keep using brushes long past that point because the head and the handle are one piece, so retiring the wire means throwing out a tool."
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "heading": "So the head comes off in five seconds",
+            "text": "Hold the unlock button, turn the included wrench, pull. You can hold the head under a light and look at the wire before you cook, which is the only way to actually know it is intact."
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "heading": "And there's a scraper for the worst of it",
+            "text": "The steel plate above the head takes the thick carbon ridges off first, so the wire isn't being mashed into hardened deposits. Less abuse on the wire means less shedding."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

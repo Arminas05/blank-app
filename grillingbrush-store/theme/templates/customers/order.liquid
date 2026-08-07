@@ -1,0 +1,20 @@
+<section class="section">
+  <div class="wrap" style="max-width:760px">
+    <h1 class="h2">{{ order.name }}</h1>
+    <p style="margin-top:10px;color:var(--muted)">{{ order.created_at | date: '%d %b %Y' }}</p>
+
+    <table class="spec-table" style="margin-top:28px">
+      <tbody>
+        {%- for line in order.line_items -%}
+          <tr>
+            <th scope="row">{{ line.title }} &times; {{ line.quantity }}</th>
+            <td>{{ line.final_line_price | money }}</td>
+          </tr>
+        {%- endfor -%}
+        <tr><th scope="row">Total</th><td>{{ order.total_price | money }}</td></tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:24px"><a href="{{ routes.account_url }}">Back to orders</a></p>
+  </div>
+</section>
