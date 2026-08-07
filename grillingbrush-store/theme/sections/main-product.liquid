@@ -1,0 +1,246 @@
+{% comment %}
+  PDP. One product, one variant (SHOPIFY-HANDOFF.md §1), so there is deliberately
+  no option picker — Shopify's default variant is used. If a second variant is
+  ever added this section needs an option selector before it will sell correctly.
+
+  Spec rows read the shop metafield grillingbrush.spec_rows (JSON list of {k, v}), the
+  same source the home page uses.
+{% endcomment %}
+{%- liquid
+  assign spec_rows = shop.metafields.grillingbrush.spec_rows.value
+  assign safety = shop.metafields.grillingbrush.safety_warning
+  assign media = product.media | where: 'media_type', 'image'
+-%}
+
+<section class="section">
+  <div class="wrap">
+    <div class="two" style="align-items:start">
+      {%- comment -%} Gallery {%- endcomment -%}
+      <div class="product-gallery" data-reveal>
+        <div class="product-gallery__main">
+          {%- if product.featured_media -%}
+            <img
+              src="{{ product.featured_media | image_url: width: 1400 }}"
+              alt="{{ product.featured_media.alt | default: product.title | escape }}"
+              width="1400"
+              height="1400"
+              fetchpriority="high"
+              data-scrub>
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+
+        {%- if media.size > 1 -%}
+          <div class="product-gallery__thumbs">
+            {%- for m in media -%}
+              <button
+                type="button"
+                class="product-gallery__thumb"
+                data-full="{{ m | image_url: width: 1400 }}"
+                aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-label="Show image {{ forloop.index }}">
+                <img
+                  src="{{ m | image_url: width: 320 }}"
+                  alt="{{ m.alt | default: product.title | escape }}"
+                  width="160"
+                  height="160"
+                  loading="lazy">
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Buy column {%- endcomment -%}
+      <div data-reveal>
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'vendor' -%}
+              <p class="eyebrow" {{ block.shopify_attributes }}>{{ product.vendor }}</p>
+
+            {%- when 'title' -%}
+              <h1 class="h2" {{ block.shopify_attributes }}>{{ product.title }}</h1>
+
+            {%- when 'description' -%}
+              <div
+                {{ block.shopify_attributes }}
+                style="margin-top:16px;font:400 16px/1.7 var(--font);color:var(--body)">
+                {{ product.description }}
+              </div>
+
+            {%- when 'price' -%}
+              <div {{ block.shopify_attributes }} style="margin-top:22px">
+                <span class="price">{{ product.price | money }}</span>
+                {%- if product.compare_at_price > product.price -%}
+                  <s style="margin-left:10px;color:var(--faint);font-size:18px">
+                    {{ product.compare_at_price | money }}
+                  </s>
+                {%- endif -%}
+              </div>
+
+            {%- when 'rating' -%}
+              <div class="rating-row" {{ block.shopify_attributes }}>
+                <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <strong style="color:var(--ink)">{{ settings.rating_value }}</strong>
+                <span>{{ settings.review_count }} ratings</span>
+                <span>&middot;</span>
+                <span>{{ settings.sold_count }}+ sold</span>
+              </div>
+
+            {%- when 'buy' -%}
+              <div {{ block.shopify_attributes }} style="margin-top:26px">
+                {%- if product.variants.size > 1 -%}
+                  <p class="notice-warn">
+                    <strong>More than one variant</strong>
+                    This section is built for a single-variant product and does not render an
+                    option picker. Add one before selling additional variants.
+                  </p>
+                {%- endif -%}
+
+                {% render 'buy-buttons',
+                  product: product,
+                  show_quantity: true,
+                  show_dynamic: block.settings.show_dynamic,
+                  label: block.settings.label
+                %}
+              </div>
+
+            {%- when 'trust' -%}
+              <ul class="chips" {{ block.shopify_attributes }}>
+                {%- assign items = block.settings.items | split: ',' -%}
+                {%- for item in items -%}
+                  <li class="chip">{{ item | strip }}</li>
+                {%- endfor -%}
+              </ul>
+
+            {%- when 'safety' -%}
+              <div class="notice-warn" {{ block.shopify_attributes }} style="margin-top:26px">
+                <strong>{{ block.settings.heading }}</strong>
+                {%- if safety != blank -%}
+                  {{ safety | metafield_tag }}
+                {%- else -%}
+                  {{ block.settings.text }}
+                {%- endif -%}
+              </div>
+
+            {%- when '@app' -%}
+              {% render block %}
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Specifications {%- endcomment -%}
+    {%- if section.settings.show_specs -%}
+      <div data-reveal style="margin-top:72px;max-width:760px">
+        <p class="eyebrow">{{ section.settings.specs_heading }}</p>
+        <table class="spec-table">
+          <tbody>
+            {%- if spec_rows != blank and spec_rows.size > 0 -%}
+              {%- for row in spec_rows -%}
+                <tr>
+                  <th scope="row">{{ row.k }}</th>
+                  <td>{{ row.v }}</td>
+                </tr>
+              {%- endfor -%}
+            {%- else -%}
+              <tr>
+                <td colspan="2">
+                  <span class="notice-placeholder" style="display:block">
+                    Set the shop metafield <code>grillingbrush.spec_rows</code> to fill this table.
+                    The JSON is in <code>metafields/spec_rows.json</code>.
+                  </span>
+                </td>
+              </tr>
+            {%- endif -%}
+          </tbody>
+        </table>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{{ product | structured_data }}
+
+{% schema %}
+{
+  "name": "Product",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_specs",
+      "label": "Show specification table",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "specs_heading",
+      "label": "Specifications heading",
+      "default": "Specifications"
+    }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    { "type": "vendor", "name": "Vendor", "limit": 1 },
+    { "type": "title", "name": "Title", "limit": 1 },
+    { "type": "description", "name": "Description", "limit": 1 },
+    { "type": "price", "name": "Price", "limit": 1 },
+    { "type": "rating", "name": "Rating row", "limit": 1 },
+    {
+      "type": "buy",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button label",
+          "default": "Add to cart — {price}"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_dynamic",
+          "label": "Show dynamic checkout button",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "trust",
+      "name": "Trust chips",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "items",
+          "label": "Chips",
+          "info": "Comma separated.",
+          "default": "60-day money back, Free US shipping, Tracked, typically 10–14 days"
+        }
+      ]
+    },
+    {
+      "type": "safety",
+      "name": "Safety warning",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Never use on a hot grill"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Fallback text",
+          "info": "Used only when the shop metafield grillingbrush.safety_warning is empty.",
+          "default": "Wait until the grate is warm, not hot — about fifteen minutes after the burners go off. Heat softens the wire and can deform the head mount."
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
