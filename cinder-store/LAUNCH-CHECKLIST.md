@@ -86,7 +86,19 @@ The original is preserved as `product-import.original.csv`.
    category, silently. Corrected to `Home & Garden > Kitchen & Dining`.
 2. **`SEO Title` and `SEO Description` were missing.** The handoff explicitly
    says to keep the keywords out of the H1 and put them in the SEO fields
-   instead; there were no SEO columns at all to put them in. Added.
+   instead; there were no SEO columns at all to put them in. Added:
+
+   - Title (54 chars): `GrillingBrush — Cordless Electric Grill Brush | CINDER`
+   - Description (151 chars): *The grill brush with a motor. A rolling stainless
+     head lifts baked-on carbon in 90 seconds, and detaches so you can inspect
+     the wire. 60-day guarantee.*
+
+   Both sit inside Google's truncation limits (~60 and ~155). `GrillingBrush`
+   is distinctive and unclaimed, but note it is an invented compound — nobody
+   searches it. The volume in that title comes from *"electric grill brush"*
+   immediately after it, which is why the descriptive phrase is still there.
+   If you want the brandable word to carry the page on its own, that is a
+   positioning decision, not an SEO one.
 3. **`Cost per item` added** at $29.50, the midpoint of the $28–31 landed cost
    in handoff §7. Without it Shopify cannot report margin.
 
@@ -137,6 +149,15 @@ documentation conflicts, not code bugs.
 ---
 
 ## Still open before launch
+
+**Rename the store.** It is currently called **"My Store 2"**. That name is not
+just cosmetic — it appears in the browser tab, order confirmation emails, the
+checkout header and the packing slip. It also breaks the SEO title: the theme
+appends the shop name only when the title does not already contain it, so a
+store called "My Store 2" turns a clean 54-character title into
+`GrillingBrush — Cordless Electric Grill Brush | CINDER – My Store 2`, past
+Google's cut-off. Rename it to **CINDER** in Settings → Store details and the
+append disappears on its own.
 
 Carried over from handoff §7, none of which the build could resolve:
 

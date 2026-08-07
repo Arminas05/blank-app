@@ -32,6 +32,12 @@
         "id": "featured_product",
         "label": "The product",
         "info": "This is a one-product store. Every buy button on the site sells this."
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Social share image",
+        "info": "Used when a link is shared and the page has no image of its own. 1200×1200 or wider."
       }
     ]
   },

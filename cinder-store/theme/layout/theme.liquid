@@ -10,6 +10,14 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
+    {% comment %}
+      The shop name is only appended when the title does not already carry it.
+      The product's SEO title ends in "| CINDER", so as long as the store is
+      named CINDER nothing is appended and the title stays inside Google's
+      ~60-character cut-off. A store still called "My Store 2" would get
+      " – My Store 2" tacked on and blow past it — rename the store, don't
+      patch this.
+    {% endcomment %}
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; {{ 'general.meta.tags' | t: tags: current_tags | join: ', ' }}{% endif -%}
@@ -20,6 +28,8 @@
     {%- if page_description -%}
       <meta name="description" content="{{ page_description | escape }}">
     {%- endif -%}
+
+    {% render 'meta-tags' %}
 
     {% comment %}
       Schibsted Grotesk is self-hosted from theme assets rather than fetched from
